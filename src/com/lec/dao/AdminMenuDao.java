@@ -69,7 +69,7 @@ public class AdminMenuDao {
 	}
 
 	// 2. food id 로 매뉴 리스트 가져오기 평점 같이 출력
-	public ArrayList<AdminMenuDto> listMenu() {
+	public ArrayList<AdminMenuDto> listMenu() { // aphoto menuname price star 
 		ArrayList<AdminMenuDto> menus = new ArrayList<AdminMenuDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
