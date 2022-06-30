@@ -117,7 +117,7 @@ SELECT * FROM ADMIN;
 ----------------------------------------------------------------------
 --                          ADMINMENU TABLE  (관리자 메뉴등록)                           --
 ----------------------------------------------------------------------
---(1) 관리자 메뉴사진 등록
+--(1) 관리자 메뉴 등록(사진도)
    INSERT INTO ADMINMENU ( FOODID , MENUNAME , MENUPRICE,APHOTO,FOODCONTENT)
        VALUES( ADMINMENU_SEQ.NEXTVAL,'옥돔','10000원','OK.JPG','제주산 옥돔');
 SELECT * FROM ADMINMENU;
@@ -126,11 +126,16 @@ SELECT * FROM MENU_REVIEW;
 --(2) FOODID 로 메뉴 리스트가져오기 (메뉴보기 에서 사진 , 메뉴이름 ,평점, 가격) 
 -- 최종 
 select foodid, avg(star) from menu_review WHERE FOODID=1 group by foodid;
-select A.APHOTO, A.MENUNAME,A.MENUPRICE, (SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) AVG from adminmenu A;
+select A.FOODID , A.APHOTO, A.MENUNAME,A.MENUPRICE, (SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) AVG from adminmenu A;
 
---(3) 메뉴 상세보기 
+--(3) foodId 로 메뉴 상세보기 
 SELECT  APHOTO , MENUNAME , FOODCONTENT FROM ADMINMENU WHERE FOODID=1;
-
+--4 메뉴 수정
+UPDATE ADMINMENU SET MENUNAME ='갈치2',
+                     MENUPRICE ='50000원',
+                     APHOTO    ='신상',
+                     FOODCONTENT = '오늘 들어와서 올려봐요'
+                     WHERE FOODID =1;
 
 SELECT  MENUNAME, MENUPRICE, APHOTO , ROUND(AVG(STAR)) FROM ADMINMENU A,  MENU_REVIEW M WHERE  A.FOODID = M.FOODID GROUP BY MENUNAME , MENUPRICE, APHOTO;
 

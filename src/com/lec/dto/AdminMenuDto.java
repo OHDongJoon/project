@@ -1,51 +1,50 @@
 package com.lec.dto;
 
 public class AdminMenuDto {
-	private int foodId;
-	private String menuName;
-	private String menuPrice;
-	private String aPhoto;
-	private String foodContent;
+	private int foodid;
+	private String menuname;
+	private String menuprice;
+	private String aphoto;
+	private String foodcontent;
 	private int star;
 	public AdminMenuDto() {}
-	public AdminMenuDto(int foodId, String menuName, String menuPrice, String aPhoto, String foodContent, int star) {
-		super();
-		this.foodId = foodId;
-		this.menuName = menuName;
-		this.menuPrice = menuPrice;
-		this.aPhoto = aPhoto;
-		this.foodContent = foodContent;
+	public AdminMenuDto(int foodid, String menuname, String menuprice, String aphoto, String foodcontent, int star) {
+		this.foodid = foodid;
+		this.menuname = menuname;
+		this.menuprice = menuprice;
+		this.aphoto = aphoto;
+		this.foodcontent = foodcontent;
 		this.star = star;
 	}
-	public int getFoodId() {
-		return foodId;
+	public int getFoodid() {
+		return foodid;
 	}
-	public void setFoodId(int foodId) {
-		this.foodId = foodId;
+	public void setFoodid(int foodid) {
+		this.foodid = foodid;
 	}
-	public String getMenuName() {
-		return menuName;
+	public String getMenuname() {
+		return menuname;
 	}
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
+	public void setMenuname(String menuname) {
+		this.menuname = menuname;
 	}
-	public String getMenuPrice() {
-		return menuPrice;
+	public String getMenuprice() {
+		return menuprice;
 	}
-	public void setMenuPrice(String menuPrice) {
-		this.menuPrice = menuPrice;
+	public void setMenuprice(String menuprice) {
+		this.menuprice = menuprice;
 	}
-	public String getaPhoto() {
-		return aPhoto;
+	public String getAphoto() {
+		return aphoto;
 	}
-	public void setaPhoto(String aPhoto) {
-		this.aPhoto = aPhoto;
+	public void setAphoto(String aphoto) {
+		this.aphoto = aphoto;
 	}
-	public String getFoodContent() {
-		return foodContent;
+	public String getFoodcontent() {
+		return foodcontent;
 	}
-	public void setFoodContent(String foodContent) {
-		this.foodContent = foodContent;
+	public void setFoodcontent(String foodcontent) {
+		this.foodcontent = foodcontent;
 	}
 	public int getStar() {
 		return star;
@@ -55,9 +54,8 @@ public class AdminMenuDto {
 	}
 	@Override
 	public String toString() {
-		return "AdminMenuDto [foodId=" + foodId + ", menuName=" + menuName + ", menuPrice=" + menuPrice + ", aPhoto="
-				+ aPhoto + ", foodContent=" + foodContent + ", star=" + star + "]";
+		return "AdminMenuDto [foodid=" + foodid + ", menuname=" + menuname + ", menuprice=" + menuprice + ", aphoto="
+				+ aphoto + ", foodcontent=" + foodcontent + ", star=" + star + "]";
 	}
-	
 	
 }

@@ -21,7 +21,7 @@
    <div class="gnb">
         <ul class="left">
          <li><a href="#">오시는길</a>
-         <li><a href="#">메뉴보기</a>
+          <li><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
           <li><a href="#">후기</a></li>
        </ul>
         <ul class="center">
@@ -40,7 +40,7 @@
 		 <div class="gnb">
         <ul class="left">
          <li><a href="#">오시는길</a>
-         <li><a href="#">메뉴보기</a>
+          <li><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
           <li><a href="#">후기</a></li>
        </ul>
         <ul class="center">
@@ -61,8 +61,8 @@
 	<c:if test="${empty member and not empty admin}"> 관리자 모드 로그인 화면
 		<div class="gnb">
         <ul class="left">
-         <li><a href="#">메뉴보기</a>
-         <li><a href="${conPatn }/adminMenuView.do">>메뉴등록</a></li>
+         <li><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
+         <li><a href="${conPath }/MenuinsertView.do">>메뉴등록</a></li>
           <li><a href="#">후기</a></li>
        </ul>
         <ul class="center">

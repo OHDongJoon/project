@@ -19,6 +19,8 @@ import com.lec.service.CModifyService;
 import com.lec.service.CWithdrawalService;
 import com.lec.service.CemailConfirmservice;
 import com.lec.service.CidConfirmService;
+import com.lec.service.MenuAllViewService;
+import com.lec.service.MenuInsertService;
 import com.lec.service.Service;
 
 @WebServlet("*.do")
@@ -68,13 +70,13 @@ public class CustomerController extends HttpServlet {
 			service = new CLogoutService();
 			service.execute(request, response);
 			viewPage ="main/main.jsp";
-		}else if(com.equals("/modifyView.do")) {
+		}else if(com.equals("/modifyView.do")) { // 정보수정
 			viewPage ="customer/modify.jsp";
 		}else if(com.equals("/modify.do")) {
 			service = new CModifyService();
 			service.execute(request, response);
 			viewPage = "main/main.jsp";
-		}else if(com.equals("/withdrawalView.do")) {
+		}else if(com.equals("/withdrawalView.do")) { // 회원탈퇴
 			viewPage = "customer/withdrawalView.jsp";
 		}else if(com.equals("/withdrawal.do")) {
 			service = new CWithdrawalService();
@@ -95,12 +97,25 @@ public class CustomerController extends HttpServlet {
 			service = new AJoinService();
 			service.execute(request, response);
 			viewPage = "admin/adminLogin.jsp";
-		}else if(com.equals("/awithdrawalView.do")) {
+		}else if(com.equals("/awithdrawalView.do")) { // 관리자 탈퇴
 			viewPage = "admin/awithdrawalView.jsp";
-		}else if(com.equals("/awithdrawal.do")) {
+		}else if(com.equals("/awithdrawal.do")) { // 처리
 			service = new AWithdrawalService();
 			service.execute(request, response);
 			viewPage = "main/main.jsp";
+		}else if(com.equals("/MenuinsertView.do")) { // 메뉴등록 화면
+			viewPage = "admin/MenuinsertView.jsp";
+		}else if(com.equals("/Menuinsert.do")) { // 메뉴등록 처리
+			service = new MenuInsertService();
+			service.execute(request, response);
+			viewPage = "main/main.jsp";   // 나중에 메뉴보기 뷰로 수정
+		}else if(com.equals("/MenuallView.do")) { //메뉴목록 가져오기
+			service = new MenuAllViewService();
+			service.execute(request, response);
+			viewPage = "customer/menuview.jsp";
+			/* * * * * * * * * * *  * * * * * * * * * * * *
+			* * * * * * * * * Menu_Review 게시판  * * * * * * *
+			* * * * * * * * * * *  * * * * * * * * * * * * */
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

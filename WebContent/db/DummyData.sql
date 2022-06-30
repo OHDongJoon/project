@@ -48,7 +48,7 @@ SELECT * FROM ADMIN;
            APHOTO           VARCHAR2(50) NOT NULL,
            FOODCONTENT  VARCHAR2(2000) NOT NULL
         );
- 
+ commit;
 --메뉴 번호 시퀀스 생성 / 삭제 
 --ADMINMENU_SEQ.NEXTVAL
 -- ADMINMENU_SEQ.CURRVAL

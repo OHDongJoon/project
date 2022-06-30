@@ -47,6 +47,12 @@
 		alert(' ${withdrawalResult }' );
 	</script>
 	</c:if>
+	
+	<c:if test="${not empty menuInsertResult }">
+	<script>
+		alert(' ${menuInsertResult }' );
+	</script>
+	</c:if>
 <jsp:include page="../main/header.jsp"/>
 <header>
 	<div id ="content">
