@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+* {
+   font-family: 'Black Han Sans', sans-serif;
+   list-style : none;
+   text-decoration : none;
+   border-collapse : collspse;
+   margin:0px;
+   padding:0px;
+   color:#000;
+}
+
+header .gnb{
+   width:1000px;
+   margin: 0 auto;
+   height : 100px;
+   overflow:hidden;
+   /* background-image: url('https://cdn.pixabay.com/photo/2014/09/09/19/07/corn-field-440338__340.jpg'); */
+   boarder : 2px solid blue;
+}
+header .gnb p {
+	
+	font-size: 16px;
+	color: blue;
+	
+}
+
+header .gnb ul > li {
+   color:white;
+   font-size :8px;
+   line-height : 30px;
+   margin: 0 auto;
+   
+   
+}
+header .gnb .center li{
+	width: 100px;
+	
+}
+header .gnb a {
+   font-size : 1.5em;
+   display : block;
+   color:black;
+   padding : 15px 15px ;
+   text-align: center;
+   
+}
+
+header .gnb .logo1 {
+	
+    font-size: 2.5em;
+    color: red;
+    display : block;
+    width : 60px;
+	height: 30px;
+   
+}
+
+
+header .gnb .left{
+   width:250px;
+   line-height :30px;
+   margin : 0 40px;
+   float:left;
+}
+header .gnb {
+	margin-top : 10px;
+}
+header .gnb .left li{
+   float:left; 
+   margin-left : 10px;
+}
+header .gnb .center{
+	width:250px;
+	padding: 0 30px;
+	float:left;
+	text-align: center;
+}
+header .gnb .right{
+   width:270px;
+   float:right; 
+  margin : 0 40px;
+}
+header .gnb .right li{
+   float:right; 
+}
+header .logo{
+	height : 300px;
+   text-align : center;
+   boarder :1px solid gray;
+  
+}

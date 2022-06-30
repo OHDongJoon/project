@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+a{
+	text-decoration: none;
+	
+}
+footer #footer_conts h4 {
+	boarder : 2px solid pink;
+}
+footer #footer_conts p {
+	margin-top : 30p;
+	text-align: center;
+	object-position: center top;
+}
+footer #footer_conts a {
+	color :black;
+	font-weight: blod;
+	font-size:0.9em;
+	text-align: center;
+}
