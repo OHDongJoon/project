@@ -26,6 +26,9 @@ import com.lec.service.Service;
 @WebServlet("*.do")
 public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private boolean go = false;
+	private boolean  back = false;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request , response);
 	}
@@ -48,9 +51,13 @@ public class CustomerController extends HttpServlet {
 			viewPage = "main/main.jsp";
 		}else if(com.equals("/joinView.do")) { // 회원가입 화면
 			viewPage = "customer/join.jsp";
+			  go = true;
 		}else if(com.equals("/join.do")) { // 회원가입 처리 
+		 if(go) {
 			service = new CJoinService();
 			service.execute(request, response);
+			go = false;
+		 }
 			viewPage = "customer/login.jsp";
 		}else if(com.equals("/idConfirm.do")) { // 아디 중복확인
 			service = new CidConfirmService();
@@ -72,9 +79,13 @@ public class CustomerController extends HttpServlet {
 			viewPage ="main/main.jsp";
 		}else if(com.equals("/modifyView.do")) { // 정보수정
 			viewPage ="customer/modify.jsp";
+			go = true;
 		}else if(com.equals("/modify.do")) {
+			if(go) {
 			service = new CModifyService();
 			service.execute(request, response);
+			go = false;
+			}
 			viewPage = "main/main.jsp";
 		}else if(com.equals("/withdrawalView.do")) { // 회원탈퇴
 			viewPage = "customer/withdrawalView.jsp";

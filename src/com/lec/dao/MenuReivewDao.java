@@ -134,10 +134,10 @@ public class MenuReivewDao {
 			pstmt.setString(1, cId);
 			pstmt.setInt(2, foodid);
 			pstmt.setInt(3, star);
-			pstmt.setString(4, "mtitle");
-			pstmt.setString(5, "mcontent");
-			pstmt.setString(6, "mphoto");
-			pstmt.setString(7, "mip");
+			pstmt.setString(4, mtitle);
+			pstmt.setString(5, mcontent);
+			pstmt.setString(6, mphoto);
+			pstmt.setString(7, mip);
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

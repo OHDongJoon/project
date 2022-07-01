@@ -74,8 +74,8 @@ public class AdminMenuDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select A.APHOTO, A.MENUNAME,A.MENUPRICE, "
-				+ "(SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) " + "AVG from adminmenu A";
+		String sql = "select A.APHOTO, A.MENUNAME,A.MENUPRICE, A.FOODID,"
+				+ "(SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) " + "STAR FROM ADMINMENU A";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);

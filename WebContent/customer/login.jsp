@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<link href="${conPath }/css/login.css" rel="stylesheet">
 </head>
 <body>
 <c:if test="${not empty errorMsg}">
@@ -21,27 +21,21 @@
 			alert('${joinResult}');
 		</script>
 	</c:if>	
-<jsp:include page="../main/header.jsp"/>
-<div id ="content_form">
-<!-- 로그인 버튼 누르면 login.do 실행  -->
-<form action="${conPath }/login.do" method="post">
-   <table>
-    <tr>
-      <th>ID</th> <!-- 회원가입후 mId 넘겨주기 -->
-         <td><input type="text" name="cId" value="${cId }" required="required"></td><!-- mid가 없으면 그냥 빈스트링 -->
-   </tr>
-    <tr>
-      <th>PW</th>
-         <td><input type="password" name="cPw" required="required"></td>
-    </tr>
-    <tr>
-    <td colspan="2">
-      <input type="submit" value="로그인" class="btn">
-      <input type="button" value="회원가입" class="btn" onclick="location='${conPath }/joinView.do'">
-     </td>
-    </tr>
-   </table>
+
+ <form action="${conPath }/login.do" method="post" id ="login-form">
+ <header>
+   <p>로그인</p>
+</header>
+     <div class="input-box">
+        <input id="username" type="text" name="cId" value="${cId }" placeholder="아이디" required="required"><!-- mid가 없으면 그냥 빈스트링 -->
+        <label for="username">아이디</label>
+     </div>
+     <div class="input-box">
+      <input id="password" type="password" name="cPw" placeholder="비밀번호" required="required">
+       <label for="password">비밀번호</label>
+     </div>
+      <input type="submit" value="로그인"  >
+  
  </form>
- </div>
 </body>
 </html>

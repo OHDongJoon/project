@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<link href="${conPath }/css/join.css" rel="stylesheet">
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -95,44 +95,62 @@
   </script>
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"/>
-	<div id="content_form">
+	
 	<form action="${conPath }/join.do" method="post" >
+	<div class="container">
+	<div class="insert">	
 		<table>
 			<caption>회원가입</caption>
-			<tr><th>아이디</th>
-					<td>
-						<input type="text" name="cId" required="required">
-						<div id="idConfirmResult"> &nbsp; </div>
-					</td>
+			<tr>
+				 <td class="col1">이름</td>
+				 <td class="col2">
+				 <input type="text" name="cName" required="required">
+				 </td>
 			</tr>
-			<tr><th>비밀번호</th>
-					<td><input type="password" name="cPw" required="required"></td>
+			<tr>
+			 <td class="col1">아이디</td>
+			  <td class="col2">
+			  <input type="text" name="cId" required="required">
+			  <div id="idConfirmResult"> &nbsp; </div>
+			 </td>
 			</tr>
-			<tr><th>비밀번호</th>
-					<td>
+			<tr>
+			  <td class="col1">비밀번호</td>
+			  <td class="col2">
+			  <input type="password" name="cPw" required="required">
+			  </td>
+			</tr>
+			<tr>
+			<td class="col1">확인비밀번호</td>
+					<td class="col2">
 						<input type="password" name="cPwChk" required="required">
 						<div id="pwChkResult"> &nbsp; </div>
 					</td>
 			</tr>
-			<tr><th>이름</th>
-					<td><input type="text" name="cName" required="required"></td>
-			</tr>
+			
 			<tr>
-			<th>메일</th>
-			   <td><input type="email" name="cEmail">
-			  <div id="emailConfirmResult"> &nbsp; </div>
+			<td class="col1">메일</td>
+			   <td class="col2">
+			   <input type="email" name="cEmail">
+			  <div id="emailConfirmResult"> &nbsp;</div>
 			</td>
 			</tr>
-			<tr><th>생년월일</th><td><input type="text" name="cBirth" id="cBirth"></td></tr>
-			<tr><th>주소</th><td><input type="text" name="cAddress"></td></tr>
-			<tr><td colspan="2">
-						<input type="submit" value="회원가입" class="btn">
-						<input type="button" value="로그인" class="btn"
-								onclick="location.href='${conPath }/loginView.do'">
-		</table>
+			<tr>
+			<td class="col1">생년월일</td>
+			<td class="col2">
+			<input type="text" name="cBirth" id="cBirth"></td>
+			</tr>
+			<tr>
+			  <td class="col1">주소</td>
+			  <td class="col2">
+			    <input type="text" name="cAddress"></td></tr>
+			</table>
+			</div>
+			<div class="create">
+			<input class="but3" type="submit" value="회원가입" >
+			<input class="but4" type="button" value="가입취소" onclick="history.go(-1)">
+		</div>
+		</div>
 	</form>
-	</div>
-	
 </body>
 </html>

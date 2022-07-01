@@ -17,8 +17,7 @@ public class MenuAllViewService implements Service {
 		
 		AdminMenuDao aDao = AdminMenuDao.getInstance();
 		ArrayList<AdminMenuDto> menus = aDao.listMenu();
-		HttpSession session = request.getSession();
-		session.setAttribute("mAllView", menus);
+		request.setAttribute("mAllView", menus);
 
 	}
 

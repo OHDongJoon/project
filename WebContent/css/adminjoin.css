@@ -1,0 +1,68 @@
+@charset "UTF-8";
+caption {
+	text-align: center;
+	 font-size: 2em;
+	  display : block;
+}
+  div.container{
+    }
+ 
+      div.insert{
+    }
+ div.create{
+    width: 800px;
+    text-align: center;
+    padding: 30px;
+    border-bottom: 1px solid black;
+    margin: auto;
+    } 
+table {
+	height: 500px;
+	width : 900px;
+	border-top: 3px solid black;
+	margin-right: auto;
+	margin-left : auto;
+}
+td {
+	border-bottom: 1px dotted black;
+	font-size : 10px;
+}
+caption {
+	text-align: left;
+}
+.col1 {
+	background-color: #e8e8e8;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+  .col2 {
+
+    text-align: left;
+    padding: 5px;
+    }
+.but3 {
+	height: 35px;
+	width : 150px;
+	background-color: white;
+	border : 2px solid black;
+}
+
+.but4 {
+	height :35px;
+	width : 150px;
+	background-color: white;
+	border : 2px solid black;
+}
+  .but3:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    }
+ 
+    .but4:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    }

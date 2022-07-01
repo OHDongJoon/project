@@ -1,38 +1,94 @@
 @CHARSET "UTF-8";
-#content_form {
-	width:100%
-	height : 300px;
+
+body {
+display: table;
+	
+	width: 100%;
+	padding: 0;
+	background: url(../img/logo2.JPG) center center no-repeat;
+	background-color: #e5e5e5;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
 }
-#content_form table {
-	boarder : 2px solid pink;
-	margin : 0px auto;
+header {
+	display: flex;
+	justify-content: center;
+}
+header p {
+	color: black;
+	font-size: 2em;
+	font-weight: 400;
+	margin-top: 0;
+}
+form {
+	padding: 10px;
+	width: 500px;
+	background-color :white;
+	margin: 0px auto;
+	text-align: center;
+	margin-top: 100px;
+	border : solid 3px black;
+	
 }
 
-#content_form table tr {
-	 height:40px; 
-	}
-#content_form table tr:hover { 
-	background-color: orange;
-	cursor: pointer;
+.input-box {
+	position: relative;
+	margin: 10px 0;
 }
-#content_form td, #content_form th {
-	text-align: center; padding:5px; 
-	}
-#content_form caption {
-	font-size: 18px; padding:10px;
-	}
-#content_form h2, #content_form b{
-	text-align: center; color:red;
-	}
-#content_form a { 
-	text-decoration: none; color:black
-	}
-#content_form .left{
-	text-align: left;
-	}
-#content_form .paging {
-	text-align: center;
-	}
-#content_form input:not(.btn), #content_form textarea {
-	width: 90%;
+
+.input-box>input {
+	background: transparent;
+	border: none;
+	border-bottom: solid 1px #ccc;
+	padding: 20px 0px 5px 0px;
+	font-size: 14pt;
+	width: 100%;
+}
+
+input::placeholder {
+	color: transparent;
+}
+
+input:placeholder-shown+label {
+	color: #aaa;
+	font-size: 14pt;
+	top: 15px;
+}
+
+input:focus+label, label {
+	color: #8aa1a1;
+	font-size: 10pt;
+	pointer-events: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+}
+
+input:focus, input:not(:placeholder-shown) {
+	border-bottom: solid 1px #8aa1a1;
+	outline: none;
+}
+
+input[type=submit] {
+	background-color: #8aa1a1;
+	border: none;
+	color: white;
+	border-radius: 5px;
+	width: 100%;
+	height: 35px;
+	font-size: 14pt;
+	margin-top: 100px;
+}
+
+#forgot {
+	text-align: right;
+	font-size: 12pt;
+	color: rgb(164, 164, 164);
+	margin: 10px 0px;
 }
