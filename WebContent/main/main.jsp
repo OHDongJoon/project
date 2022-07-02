@@ -6,75 +6,141 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/main.css" rel="stylesheet"> 
+<!-- Favicons
+    ================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gugi&display=swap" rel="stylesheet">
+
+
+<link href="${conPath }/css/main.css" rel="stylesheet">
+<style>
+	
+</style>
 </head>
 <body>
-  <c:if test="${not empty adminLoginResult }">
+	<c:if test="${not empty adminLoginResult }">
 		<script>
-		alert('${adminLoginResult }');
+			alert('${adminLoginResult }');
 		</script>
 	</c:if>
 	<c:if test="${not empty awithdrawalResult }">
-	   <script>
-	    alert('${awithdrawalResult }');
-	   </script>
-	</c:if>
-	
-	 <c:if test="${not empty adminloginErrorMsg }">
 		<script>
-		alert('${adminloginErrorMsg }');
-		history.back();
+			alert('${awithdrawalResult }');
+		</script>
+	</c:if>
+
+	<c:if test="${not empty adminloginErrorMsg }">
+		<script>
+			alert('${adminloginErrorMsg }');
+			history.back();
 		</script>
 	</c:if>
 	<c:if test="${not empty loginErrorMsg }">
-	<script>
-		alert(' ${loginErrorMsg}' );
-		history.back();
-	</script>
+		<script>
+			alert(' ${loginErrorMsg}');
+			history.back();
+		</script>
 	</c:if>
-	
+
 	<c:if test="${not empty modifyResult }">
-	<script>
-		alert(' ${modifyResult}' );
-		
-	</script>
+		<script>
+			alert(' ${modifyResult}');
+		</script>
 	</c:if>
-	
+
 	<c:if test="${not empty withdrawalResult }">
-	<script>
-		alert(' ${withdrawalResult }' );
-	</script>
+		<script>
+			alert(' ${withdrawalResult }');
+		</script>
 	</c:if>
-	
+
 	<c:if test="${not empty menuInsertResult }">
-	<script>
-		alert(' ${menuInsertResult }' );
-	</script>
+		<script>
+			alert(' ${menuInsertResult }');
+		</script>
 	</c:if>
 
 
- <jsp:include page="../main/header.jsp"/>
- <div id="main">
-   <div class = "intro">
-     <div class = "overlay">
-       <div class="container">
-         <div class="row">
-         <div class="intro-text">
-           <h1>교래향</h1>
-           <p>Reservations :(887) 654-3210</p>
-         </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
-
+	<jsp:include page="../main/header.jsp" />
+	<div id="main">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="intro-text">
+            <h1>교래향</h1>
+            <p>Reservations: (887) 654-3210</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Features Section -->
+<div id="features" class="text-center">
+  <div class="container">
+     
+    <div class="section-title">
+      <h1 class="go1">menu</h1> 
+      <p class="go">메뉴더보기</p>
+      
+    </div>
+    <div class="row">
+     <div id="all">
+      <div class="col-xs-12 col-sm-4">
+          <div class="features-item">
+              
+              <img src="${conPath }/img/DSC_9924.JPG" class="img-responsive" alt="">
+              <h3>갈치구이_4인</h3>
+              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+          </div>
+      </div> <!--  1번  -->
+      <div class="col-xs-12 col-sm-4">
+          <div class="features-item">
+             
+              <img src="${conPath }/img/DSC_8390.JPG" class="img-responsive" alt="">
+              <h3>갈치구이_4인</h3>
+              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+          </div>
+      </div>  <!--  2번 -->
+      <div class="col-xs-12 col-sm-4">
+          <div class="features-item">
+              <img src="${conPath }/img/do.JPG" class="img-responsive" alt="">
+              <h3>갈치구이_4인</h3>
+              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+          </div>
+      </div>  <!--  3본 -->
+      <div class="features-item2">
+              <img src="${conPath }/img/DSC_9924.JPG" class="img-responsive" alt="">
+             <h3>갈치구이_4인</h3>
+              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+          </div>
+       <!--  1번  -->
+      <div class="col-xs-12 col-sm-4">
+          <div class="features-item2">	
+              <img src="${conPath }/img/DSC_8390.JPG" class="img-responsive" alt="">
+              <h3>갈치구이_4인</h3>
+              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+          </div>
+      </div>  <!--  2번 -->
+      <div class="col-xs-12 col-sm-4">
+          <div class="features-item2">
+              <img src="${conPath }/img/do.JPG" class="img-responsive" alt="">
+              <h3>갈치구이_4인</h3>
+              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+          </div>
+      </div>  <!--  3본 -->
+      </div>
+      </div>
+    </div>
+  </div>
+<jsp:include page="../main/footer.jsp" />
 </body>
 </html>
- 
-     <%-- <p><a href="#">메뉴더보기 ▶</a></p>
+
+<%-- <p><a href="#">메뉴더보기 ▶</a></p>
 	  <div class="manu1">
 		  <img src="${conPath }/img/DSC_9924.JPG" width=250px;>
 		   <img src="${conPath }/img/logo2.JPG" width=250px;>

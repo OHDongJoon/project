@@ -76,7 +76,7 @@ select A.APHOTO, A.MENUNAME,A.MENUPRICE,A.FOODID,  (SELECT AVG(STAR) FROM MENU_R
 DROP SEQUENCE Notice_SEQ;     
 CREATE SEQUENCE Notice_SEQ MAXVALUE 999999 NOCACHE NOCYCLE;
 
-            
+       commit;     
     
 --------------------------------------------------------------------
  ---   4.             메뉴 후기 글 남기기  MENU_REVIEW               -----

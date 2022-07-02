@@ -34,7 +34,7 @@
             <div class="head-wrap-sub">
                 <nav class="head-menu-main-nav">
                     <ul>
-                     <li class="main-nav01"><a href="${conPath }/boardList.do">공지사항</a></li>
+                     <li class="main-nav01"><a href="${conPath }/NoticeList.do">공지사항</a></li>
 					<li class="main-nav02"><a href="${conPath }/joinView.do">회원가입</a></li>
 					<li class="main-nav03"><a href="${conPath }/loginView.do">로그인</a></li>
                     </ul>
@@ -61,7 +61,7 @@
             <div class="head-wrap-sub">
                 <nav class="head-menu-main-nav">
                     <ul>
-                     <li class="main-nav01"><a href="${conPath }/boardList.do">공지사항</a></li>
+                     <li class="main-nav01"><a href="${conPath }/NoticeList.do">공지사항</a></li>
 					<li class="main-nav02"><a href="${conPath }/modifyView.do">정보수정</a></li>
 					<li class="main-nav03"><a href="${conPath }/logout.do">로그아웃</a></li>
                     </ul>
@@ -88,7 +88,7 @@
             <div class="head-wrap-sub">
                 <nav class="head-menu-main-nav">
                     <ul>
-                     <li class="main-nav01"><a href="${conPath }/boardList.do">공지사항</a></li>
+                     <li class="main-nav01"><a href="${conPath }/NoticeList.do">공지사항</a></li>
 					<li class="main-nav02"><a href="${conPath }/logout.do">관리자모드 나가기</a></li>
 					<li class="main-nav03"><a href="${conPath }/awithdrawalView.do">탈퇴하기</a></li>
                     </ul>

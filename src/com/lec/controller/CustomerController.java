@@ -21,6 +21,8 @@ import com.lec.service.CemailConfirmservice;
 import com.lec.service.CidConfirmService;
 import com.lec.service.MenuAllViewService;
 import com.lec.service.MenuInsertService;
+import com.lec.service.NoticeListService;
+import com.lec.service.NoticeWriteService;
 import com.lec.service.Service;
 
 @WebServlet("*.do")
@@ -125,8 +127,22 @@ public class CustomerController extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "customer/menuview.jsp";
 			/* * * * * * * * * * *  * * * * * * * * * * * *
-			* * * * * * * * * Menu_Review 게시판  * * * * * * *
+			* * * * * * * * * 공지사항 게시판  * * * * * * *
 			* * * * * * * * * * *  * * * * * * * * * * * * */
+		}else if(com.equals("/NoticeList.do")) { //공지사항 글목록
+			service = new NoticeListService();
+			service.execute(request, response);
+			viewPage  = "notice/noticeList.jsp";
+		}else if(com.equals("/NoticeWriteView.do")) { // 공지글쓰기
+			viewPage ="notice/noticeWrite.jsp";
+			go = true;
+		}else if(com.equals("/NoticeWrite.do")) {
+			if(go) {
+			service = new NoticeWriteService();
+			service.execute(request, response);
+			go = false;
+			    }
+			viewPage = "NoticeList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

@@ -9,17 +9,50 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/footer.css" rel="stylesheet">
+	<style>
+	 .clear {
+	   clear :both;
+	  }
+	  footer {
+	   font-family :'돋음';
+	   width : 100%;
+	   height: 300px
+	   background-color:red;
+	   
+	  }
+	  #footer_box{
+	   width : 1140px;
+	   height: 100px;
+	   margin : 0 auto;
+	  }
+	  #footer_logo {
+	  float : left;
+	  margin : 20px 0 50 20px;
+	  }
+	  #footer_box #address {
+	   
+	   margin : 45px 0 0 30px;
+	  }
+	  li {
+	    list-style-type: none; 
+	 
+	  }
+	</style>
 </head>
 <body>
+<div class="clear"></div>
 <footer>
-
-  <div id="footer_conts">
-    <a href="#">오시는길</a>
-    <div class="img1">
-       <p><img src="${conPath }/img/footer.PNG" width="300px;" ></p>
+  <div id="footer_box">
+     <div id="footer_logo">
+       <img src="../img/logo.png">
      </div>
-   <p>오시는길</p>
-     <p>제주 제주시 조천읍 비자림로 638 | <b><a href="${conPath }/adminLoginView.do">관리자모드</a></b></p>
+       <div id="address">
+          <ul>
+             <li>제주시 조천읍 비자림로 638    |<b><a href="${conPath }/adminLoginView.do">관리자모드</a></b> </li>
+             <li>대표 : 오동준    TEL : 010-2222-2222</li>
+             <li>COPYRIGHT (C) 교래향 ALL RIGHTS RESERVED</li>
+          </ul>
+       </div>
   </div>
 </footer>
 </body>

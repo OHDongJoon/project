@@ -144,12 +144,60 @@ SELECT  MENUNAME, MENUPRICE, APHOTO , ROUND(AVG(STAR)) FROM ADMINMENU A,  MENU_R
 ----------------------------------------------------------------------
 --                          ADMINMENU NOTICE  (관리자 공지사항)                           --
 ----------------------------------------------------------------------
---(1) 공지사항 등록
 
-    INSERT INTO NOTICE (NID , AID , ATITLE , ACONTENT ,AIP)
-        VALUES(Notice_SEQ.NEXTVAL , 'admin' , '공지사항입니다' , '오늘 오시면 된장찌개 서비스 입니다 ' , '192.111');
-SELECT * FROM NOTICE;
 -- 작성자 이름  나오게 조인
+SELECT * FROM notice;
 SELECT  ANAME , N.*  FROM NOTICE N, ADMIN A WHERE N.AID=A.AID;
+commit;
+
+SELECT * FROM 
+(SELECT ROWNUM RN, A. * FROM
+(SELECT N.*, ANAME FROM NOTICE N, ADMIN A WHERE N.AID=A.AID
+ORDER BY NID DESC) A) WHERE RN  BETWEEN 1 AND 5;
+---------------------------------------------------------------------
+
+ --(1) 글목록(startRoW 부터 endRow까지) - 글번호 , 작성이름, 등등등 ... 
+SELECT N.*, ANAME FROM NOTICE N, ADMIN A WHERE N.AID=A.AID;
+    SELECT * FROM 
+    (SELECT ROWNUM RN, A. * FROM
+    (SELECT  M.*, CNAME FROM MENU_REVIEW M, CUSTOMER C WHERE M.CID=C.CID
+            ORDER BY MGROUP DESC, MSTEP) A)
+    WHERE RN BETWEEN 1 AND 5;  
+    
+SELECT * FROM 
+    (SELECT ROWNUM RN, A. * FROM
+    (SELECT N.*, ANAME FROM NOTICE N, ADMIN A WHERE N.AID=A.AID
+        ORDER BY NID DESC) A)
+    WHERE RN  BETWEEN 1 AND 5;
+   commit;
+    ROLLBACK;
+
+--(2) 글 갯수
+SELECT * FROM NOTICE;
+SELECT COUNT(*) FROM NOTICE ;
+
+SELECT * FROM NOTICE;
+
+--(3) 공지사항 등록 글등록
+
+    INSERT INTO NOTICE (NID , AID, ATITLE , ACONTENT ,AIP)
+        VALUES(Notice_SEQ.NEXTVAL , 'admin', '공지사항입니다3' , '오늘 오시면 공기밥 서비스 입니다 ' , '192.111');
+SELECT * FROM NOTICE;
+
+
+
+--(5) MID로 글 DTO 보기 
+SELECT N.*, ANAME FROM NOTICE N, ADMIN A WHERE N.AID=A.AID AND NID=1;
+
+--(6) 글 수정하기(NID , ATITLE, ACONTNET,  AIP , ARDATE  
+UPDATE NOTICE SET  ATITLE= '오늘 사장이 미쳤어요 ',
+                        ACONTENT = '갈치구이 시키면 두루치기가 공짜!',
+                        AIP = '1111',
+                        ARDATE =SYSDATE
+                WHERE NID = 1;
+COMMIT;
+--(7) 글 삭제하기 (MID로 삭제하기)
+DELETE FROM NOTICE WHERE NID =3;
+
  SELECT * FROM NOTICE;
 
