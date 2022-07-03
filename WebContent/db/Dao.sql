@@ -65,7 +65,7 @@ DELETE MENU_REVIEW WHERE MID='1';
 --(4) MHIT 하나 올리기 ( 1번글 조회수 하나 올리기)
 UPDATE MENU_REVIEW SET MHIT = MHIT +1 WHERE MID =1;
 --(5) MID로 글 DTO 보기 
-SELECT M.*, CNAME FROM MENU_REVIEW M, CUSTOMER C WHERE C.CID=M.CID AND MID=1;
+SELECT N.*, ANAME FROM NOTICE N, ADMIN A WHERE N.AID=A.AID AND NID=1;
 
 --(6) 글 수정하기(MID , MTITLE, MCONTNET, MPHOTO , MIP , MRDATE  
 UPDATE MENU_REVIEW SET MTITLE= '바뀐갈치후기',
@@ -190,14 +190,15 @@ SELECT * FROM NOTICE;
 SELECT N.*, ANAME FROM NOTICE N, ADMIN A WHERE N.AID=A.AID AND NID=1;
 
 --(6) 글 수정하기(NID , ATITLE, ACONTNET,  AIP , ARDATE  
-UPDATE NOTICE SET  ATITLE= '오늘 사장이 미쳤어요 ',
+UPDATE NOTICE SET  ATITLE= '오늘  ',
                         ACONTENT = '갈치구이 시키면 두루치기가 공짜!',
                         AIP = '1111',
                         ARDATE =SYSDATE
                 WHERE NID = 1;
 COMMIT;
+select * from notice;
 --(7) 글 삭제하기 (MID로 삭제하기)
 DELETE FROM NOTICE WHERE NID =3;
 
  SELECT * FROM NOTICE;
-
+commit;

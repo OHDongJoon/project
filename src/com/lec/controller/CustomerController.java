@@ -20,8 +20,14 @@ import com.lec.service.CWithdrawalService;
 import com.lec.service.CemailConfirmservice;
 import com.lec.service.CidConfirmService;
 import com.lec.service.MenuAllViewService;
+import com.lec.service.MenuContetService;
 import com.lec.service.MenuInsertService;
+import com.lec.service.MenuModifyViewService;
+import com.lec.service.NoticeContentService;
+import com.lec.service.NoticeDeleteService;
 import com.lec.service.NoticeListService;
+import com.lec.service.NoticeModifyService;
+import com.lec.service.NoticeModifyViewService;
 import com.lec.service.NoticeWriteService;
 import com.lec.service.Service;
 
@@ -125,7 +131,16 @@ public class CustomerController extends HttpServlet {
 		}else if(com.equals("/MenuallView.do")) { //메뉴목록 가져오기
 			service = new MenuAllViewService();
 			service.execute(request, response);
-			viewPage = "customer/menuview.jsp";
+			viewPage = "menu/menuview.jsp";
+		}else if(com.equals("/MenuContent.do")) { // 메뉴 상세보기
+			service = new MenuContetService();
+			service.execute(request, response);
+			viewPage = "menu/menuContent.jsp";
+		}else if(com.equals("/MenuModifyView.do")){ // 메
+			service = new MenuModifyViewService();
+			service.execute(request, response);
+			viewPage ="menu/menuModifyView.jsp";
+		
 			/* * * * * * * * * * *  * * * * * * * * * * * *
 			* * * * * * * * * 공지사항 게시판  * * * * * * *
 			* * * * * * * * * * *  * * * * * * * * * * * * */
@@ -136,12 +151,28 @@ public class CustomerController extends HttpServlet {
 		}else if(com.equals("/NoticeWriteView.do")) { // 공지글쓰기
 			viewPage ="notice/noticeWrite.jsp";
 			go = true;
-		}else if(com.equals("/NoticeWrite.do")) {
+		}else if(com.equals("/NoticeWrite.do")) { // 공지글 db 저장
 			if(go) {
 			service = new NoticeWriteService();
 			service.execute(request, response);
 			go = false;
 			    }
+			viewPage = "NoticeList.do";
+		}else if(com.equals("/noticeContent.do")) { // 공지글 상세보기
+			service = new NoticeContentService();
+			service.execute(request, response);
+			viewPage = "notice/noticeContent.jsp";
+		}else if(com.equals("/noticeModifyView.do")) { // 공지글 수정 화면
+			service = new NoticeModifyViewService();
+			service.execute(request, response);
+			viewPage = "notice/noticeModify.jsp";
+		}else if(com.equals("/noticeModify.do")) {
+			service = new NoticeModifyService();
+			service.execute(request, response);
+			viewPage = "NoticeList.do";
+		}else if(com.equals("/noticeDelete.do")) { // 글삭제
+			service = new NoticeDeleteService();
+			service.execute(request, response);
 			viewPage = "NoticeList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

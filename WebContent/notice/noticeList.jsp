@@ -30,6 +30,17 @@
 	width: 90%;
 }
 	</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+		$('tr').click(function(){
+			var nid = Number($(this).children().eq(0).text());// 0 번째 td안의 있는 text;
+		if(!isNaN(nid)){
+			location.href = '${conPath }/noticeContent.do?nid='+nid+'&pageNum=${pageNum}';
+		}
+		});
+	});
+</script>
 </head>
 <body>
 	<!--  글쓰기 성공 if noticeList -->
@@ -38,7 +49,28 @@
        alert('${noticeWriteResult }');
      </script>
   </c:if>
-   ${noticeList }
+  <c:if test="${noticeResult eq 1 }">
+  	<script>
+  		alert('글 수정 성공');
+  	</script>
+  </c:if>
+  <c:if test="${noticeResult eq 0 }">
+  	<script>
+  		alert('글 수정 실패');
+  		history.back();
+  	</script>
+  </c:if>
+  <c:if test="${noticeDeleteResult eq 1 }">
+     <script>
+      alert('글 삭제 성공');
+     </script>
+  </c:if>
+   <c:if test="${noticeDeleteResult eq 0 }">
+     <script>
+      alert('글 삭제 실패');
+     </script>
+  </c:if>
+  
 <jsp:include page="../main/header.jsp"/>
 <div id ="content_form">
   <table>
@@ -81,18 +113,18 @@
    </table>
  <div class ="paging">
 	     <c:if test="${startPage > BLOCKSIZE }">
-			[ <a href="${conPath }/boardList.do?pageNum=${startPage-1}"> 이전 </a> ]
+			[ <a href="${conPath }/NoticeList.do?pageNum=${startPage-1}"> 이전 </a> ]
 		</c:if>
 		<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i == pageNum }">
 				<b> [ ${i } ] </b>
 			</c:if>
 			<c:if test="${i != pageNum }">
-				[ <a href="${conPath }/boardList.do?pageNum=${i}"> ${i } </a> ]
+				[ <a href="${conPath }/NoticeList.do?pageNum=${i}"> ${i } </a> ]
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage<pageCnt }">
-		  [ <a href="${conPath }/boardList.do?pageNum=${endPage+1}"> 다음 </a> ]
+		  [ <a href="${conPath }/NoticeList.do?pageNum=${endPage+1}"> 다음 </a> ]
 		</c:if>
 	 </div>
 </div>

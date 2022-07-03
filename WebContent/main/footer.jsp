@@ -44,7 +44,8 @@
 <footer>
   <div id="footer_box">
      <div id="footer_logo">
-       <img src="../img/logo.png">
+       <img class="head-logo" src="${conPath }/img/logo.png">
+       
      </div>
        <div id="address">
           <ul>

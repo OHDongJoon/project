@@ -75,7 +75,7 @@ select A.APHOTO, A.MENUNAME,A.MENUPRICE,A.FOODID,  (SELECT AVG(STAR) FROM MENU_R
 --관리자 글번호 시퀀스 생성
 DROP SEQUENCE Notice_SEQ;     
 CREATE SEQUENCE Notice_SEQ MAXVALUE 999999 NOCACHE NOCYCLE;
-
+select * from notice;
        commit;     
     
 --------------------------------------------------------------------

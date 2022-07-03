@@ -145,7 +145,7 @@ public class NoticeDao {
 				 String aid = rs.getString("aid");
 				 String atitle = rs.getString("atitle");
 				 String acontent = rs.getString("acontent");
-				 Date   ardate = rs.getDate("rdate"); 
+				 Date   ardate = rs.getDate("ardate"); 
 				 String aip = rs.getString("aip");
 				 String aname = rs.getString("aname");
 				 dto = new NoticeDto(nid, aid, atitle, acontent, ardate, aip, aname);
@@ -178,7 +178,7 @@ public class NoticeDao {
 				 String aid = rs.getString("aid");
 				 String atitle = rs.getString("atitle");
 				 String acontent = rs.getString("acontent");
-				 Date   ardate = rs.getDate("rdate"); 
+				 Date   ardate = rs.getDate("ardate"); 
 				 String aip = rs.getString("aip");
 				 String aname = rs.getString("aname");
 				 dto = new NoticeDto(nid, aid, atitle, acontent, ardate, aip, aname);
@@ -209,9 +209,8 @@ public class NoticeDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, atitle);
 			pstmt.setString(2, acontent);
-			pstmt.setString(3, acontent);
-			pstmt.setString(4, aip);
-			pstmt.setInt(5, nid);
+			pstmt.setString(3, aip);
+			pstmt.setInt(4, nid);
 			result = pstmt.executeUpdate();
 			System.out.println(result==SUCCESS? "공지글수정성공":"공지글수정실패");
 		} catch (SQLException e) {
