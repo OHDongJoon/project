@@ -21,7 +21,9 @@ import com.lec.service.CemailConfirmservice;
 import com.lec.service.CidConfirmService;
 import com.lec.service.MenuAllViewService;
 import com.lec.service.MenuContetService;
+import com.lec.service.MenuDeleteService;
 import com.lec.service.MenuInsertService;
+import com.lec.service.MenuModifyService;
 import com.lec.service.MenuModifyViewService;
 import com.lec.service.NoticeContentService;
 import com.lec.service.NoticeDeleteService;
@@ -29,6 +31,8 @@ import com.lec.service.NoticeListService;
 import com.lec.service.NoticeModifyService;
 import com.lec.service.NoticeModifyViewService;
 import com.lec.service.NoticeWriteService;
+import com.lec.service.ReivewListService;
+import com.lec.service.ReivewWriteService;
 import com.lec.service.Service;
 
 @WebServlet("*.do")
@@ -122,12 +126,15 @@ public class CustomerController extends HttpServlet {
 			service = new AWithdrawalService();
 			service.execute(request, response);
 			viewPage = "main/main.jsp";
+			/* * * * * * * * * * *  * * * * * * * * * * * *
+			* * * * * * * * * 관리자 음식 메뉴   관련 요청  * * * * * * *
+			* * * * * * * * * * *  * * * * * * * * * * * * */
 		}else if(com.equals("/MenuinsertView.do")) { // 메뉴등록 화면
 			viewPage = "admin/MenuinsertView.jsp";
 		}else if(com.equals("/Menuinsert.do")) { // 메뉴등록 처리
 			service = new MenuInsertService();
 			service.execute(request, response);
-			viewPage = "main/main.jsp";   // 나중에 메뉴보기 뷰로 수정
+			viewPage = "MenuallView.do";   // 나중에 메뉴보기 뷰로 수정
 		}else if(com.equals("/MenuallView.do")) { //메뉴목록 가져오기
 			service = new MenuAllViewService();
 			service.execute(request, response);
@@ -136,11 +143,18 @@ public class CustomerController extends HttpServlet {
 			service = new MenuContetService();
 			service.execute(request, response);
 			viewPage = "menu/menuContent.jsp";
-		}else if(com.equals("/MenuModifyView.do")){ // 메
+		}else if(com.equals("/MenuModifyView.do")){ // 메뉴 수정하기 화면
 			service = new MenuModifyViewService();
 			service.execute(request, response);
 			viewPage ="menu/menuModifyView.jsp";
-		
+		}else if(com.equals("/MenuModify.do")) { // 메뉴 수정 db 저장
+			service = new MenuModifyService();
+			service.execute(request, response);
+			viewPage = "MenuallView.do"; 
+		}else if(com.equals("/MenuDelete.do")) { // 메뉴 삭제
+			service = new MenuDeleteService();
+			service.execute(request, response);
+			viewPage = "MenuallView.do";
 			/* * * * * * * * * * *  * * * * * * * * * * * *
 			* * * * * * * * * 공지사항 게시판  * * * * * * *
 			* * * * * * * * * * *  * * * * * * * * * * * * */
@@ -174,6 +188,19 @@ public class CustomerController extends HttpServlet {
 			service = new NoticeDeleteService();
 			service.execute(request, response);
 			viewPage = "NoticeList.do";
+			/* * * * * * * * * * *  * * * * * * * * * * * *
+			* * * * * * * * * 메뉴 후기  게시판  * * * * * * *
+			* * * * * * * * * * *  * * * * * * * * * * * * */
+		}else if(com.equals("/reivewList.do")) { // 후기 글 리스트 가져오기 
+			service = new ReivewListService();
+			service.execute(request, response);
+			viewPage = "reivew/reivewList.jsp";
+		}else if(com.equals("/reivewWrite.do")) {
+			service = new ReivewWriteService();
+			service.execute(request, response);
+			viewPage ="reivewList.do";
+		}else if(com.equals("/reivewWriteView.do")) {
+			viewPage = "reivew/reivewWrite.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

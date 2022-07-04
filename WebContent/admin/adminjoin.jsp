@@ -23,20 +23,20 @@
 			<tr>
 				 <td class="col1">이름</td>
 				 <td class="col2">
-				 <input type="text" name="cName" required="required">
+				 <input type="text" name="aName" required="required">
 				 </td>
 			</tr>
 			<tr>
 			 <td class="col1">아이디</td>
 			  <td class="col2">
-			  <input type="text" name="cId" required="required">
+			  <input type="text" name="aId" required="required">
 			  <div id="idConfirmResult"> &nbsp; </div>
 			 </td>
 			</tr>
 			<tr>
 			  <td class="col1">비밀번호</td>
 			  <td class="col2">
-			  <input type="password" name="cPw" required="required">
+			  <input type="password" name="aPw" required="required">
 			  </td>
 			</tr>
 				</table>

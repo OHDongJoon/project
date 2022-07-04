@@ -37,6 +37,7 @@ COMMIT;
     INSERT INTO ADMIN ( AID , APW , ANAME)
           VALUES('admin','111','오동준');
 SELECT * FROM ADMIN;
+commit;
 --3. --------------------------------------------------------------------
   ---           3.     관리자 메뉴 등록 ADMINMENU                   -----
  --------------------------------------------------------------------
@@ -48,6 +49,7 @@ SELECT * FROM ADMIN;
            APHOTO           VARCHAR2(50) NOT NULL,
            FOODCONTENT  VARCHAR2(2000) NOT NULL
         );
+        select * from adminmenu;
  commit;
 select A.APHOTO, A.MENUNAME,A.MENUPRICE,A.FOODID,  (SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) star from adminmenu A;
 --메뉴 번호 시퀀스 생성 / 삭제 
@@ -91,7 +93,7 @@ SELECT * FROM MENU_REVIEW;
        MID                  NUMBER(6) PRIMARY KEY, --메뉴글번호
        CID                  VARCHAR2(50) REFERENCES CUSTOMER(CID),
        FOODID           NUMBER(6) REFERENCES  ADMINMENU (FOODID),
-       STAR             NUMBER(5) DEFAULT 0 ,
+       STAR             NUMBER(5) DEFAULT 0,
        MTITLE            VARCHAR2(250) NOT NULL,
        MCONTENT      VARCHAR2(4000) NOT NULL,
        MPHOTO           VARCHAR2(30),
@@ -110,9 +112,9 @@ CREATE SEQUENCE MENU_REVIEW_SEQ MAXVALUE 999999 NOCACHE NOCYCLE;
 --(더미데이터 후기 원글작성)
 --VALUES (FILEBOARD_SEQ.NEXTVAL, 'go','title','content',null, FILEBOARD_SEQ.CURRVAL, 0, 0, '192.168.20.31');
 
-INSERT INTO MENU_REVIEW ( MID,CID, FOODID ,MTITLE,MCONTENT,MPHOTO,MGROUP,MSTEP,MINDENT,MIP)
+INSERT INTO MENU_REVIEW ( MID,CID, FOODID ,MTITLE,MCONTENT,MPHOTO,MGROUP,MSTEP,MINDENT,MIP, star)
             VALUES(MENU_REVIEW_SEQ.NEXTVAL,'AAA',1,'갈치조림짱','갈치가아주좋았어요',NULL,
-                 MENU_REVIEW_SEQ.CURRVAL,0,0,'192.');
+                 MENU_REVIEW_SEQ.CURRVAL,0,0,'192.',3);
 
 INSERT INTO MENU_REVIEW ( MID,CID, FOODID ,MTITLE,MCONTENT,MPHOTO,MGROUP,MSTEP,MINDENT,MIP)
             VALUES(MENU_REVIEW_SEQ.NEXTVAL,'BBB',1,'갈치가 싱싱해요','역시 교래향',NULL,
@@ -126,14 +128,6 @@ SELECT * FROM MENU_REVIEW;
 --------------------------------------------------------------------
  ---               댓글 남기기   REPLY                             -----
  --------------------------------------------------------------------
--- 댓글 테이블 생성 / 삭제 
-DROP TABLE REPLY;
- CREATE TABLE REPLY(
-    MID            NUMBER(6)   REFERENCES MENU_REVIEW(MID),
-    CID          VARCHAR2(50) REFERENCES CUSTOMER(CID),
-    REPLYMEMO  VARCHAR2(1000) NOT NULL ,
-    RDATE         DATE DEFAULT SYSDATE,
-    RIP              VARCHAR2(20) NOT NULL);
 
 
 

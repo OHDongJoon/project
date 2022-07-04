@@ -32,11 +32,7 @@
 	     	<textarea rows="5" cols="10"name="foodcontent"></textarea>
 	     </td>
 	  </tr>
-	  <tr>
-	     <th>평점</th>
-	     <td>
-	        <input type="text" name ="star" required="required"></td>
-	     </tr>
+	 
 	  <tr>
 	     <td colspan="3">
 	       <input type="submit" value="메뉴등록">

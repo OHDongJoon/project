@@ -85,9 +85,8 @@ public class AdminMenuDao {
 				String aphoto = rs.getString("aphoto"); // 사진
 				String menuname = rs.getString("menuname"); // 메뉴이름
 				String menuprice = rs.getString("menuprice"); // 메뉴가격
-				int star = rs.getInt("star"); // 메뉴리뷰테이블에서 조인해서 가져온 평점
 				int foodid = rs.getInt("foodid"); // 메뉴번호 시퀀스
-				menus.add(new AdminMenuDto(foodid, menuname, menuprice, aphoto, null, star));
+				menus.add(new AdminMenuDto(foodid, menuname, menuprice, aphoto, null));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -123,7 +122,7 @@ public class AdminMenuDao {
 				String aphoto = rs.getString("aphoto");
 				String menuname = rs.getString("menuname");
 				String foodcontent = rs.getString("foodcontent");
-				dto = new AdminMenuDto(foodid, menuname, null, aphoto, foodcontent, 0);
+				dto = new AdminMenuDto(foodid, menuname, null, aphoto, foodcontent);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -147,8 +146,10 @@ public class AdminMenuDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE ADMINMENU SET MENUNAME = ?," + "                     MENUPRICE    = ?,"
-				+ "                     APHOTO       = ?," + "                     FOODCONTENT  = ?"
+		String sql = "UPDATE ADMINMENU SET MENUNAME = ?," 
+		        + "  MENUPRICE    = ?,"
+				+ "  APHOTO       = ?,"
+		        + " FOODCONTENT  = ?"
 				+ "                     WHERE FOODID =?";
 		try {
 			conn = getConnection();
@@ -174,7 +175,7 @@ public class AdminMenuDao {
 		return result;
 	}
 
-	// 5. 메뉴삭제
+	// 5. 메뉴삭제 
 	public int deleteMenu(int foodid) {
 		int result = FAIL;
 		Connection conn = null;
@@ -199,14 +200,37 @@ public class AdminMenuDao {
 		}
 		return result;
 	}
-
+	// 메뉴삭제전  fooid 참조한 후기 랑 답글 삭제 !
+	public int deleteMenu2(int foodid) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM  MENU_REVIEW WHERE FOODID=?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, foodid);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+			}
+		}
+		return result;
+	}
 	// 메뉴수정하기 view
 	public AdminMenuDto modifyMenuView(int foodid) {
 		AdminMenuDto dto = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT  APHOTO , MENUNAME , FOODCONTENT FROM ADMINMENU WHERE FOODID=?";
+		String sql = "SELECT  APHOTO , MENUNAME ,MENUPRICE, FOODCONTENT FROM ADMINMENU WHERE FOODID=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -217,7 +241,7 @@ public class AdminMenuDao {
 				String menuname = rs.getString("menuname");
 				String foodcontent = rs.getString("foodcontent");
 				String menuprice = rs.getString("menuprice");
-				dto = new AdminMenuDto(foodid, menuname, menuprice, aphoto, foodcontent, 0);
+				dto = new AdminMenuDto(foodid, menuname, menuprice, aphoto, foodcontent);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -235,4 +259,5 @@ public class AdminMenuDao {
 		}
 		return dto;
 	}
+	
 }

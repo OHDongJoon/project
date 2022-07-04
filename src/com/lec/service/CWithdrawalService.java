@@ -16,8 +16,8 @@ public class CWithdrawalService implements Service {
 		CustomerDto customer = (CustomerDto)session.getAttribute("customer");
 		if(customer!=null) {
 			String cId = customer.getcId();
-			// 글 삭제로직 들어올곳
 			CustomerDao  cDao = CustomerDao.getInstance();
+			cDao.withdrawal2(cId); // 회원탈퇴전에 글 삭제 
 			int result = cDao.withdrawal(cId);
 			if(result == CustomerDao.SUCCESS) {
 				request.setAttribute("withdrawalResult", "회원탈퇴가 성공되었습니다. 작성하신 모든 글도 다 지워집니다");

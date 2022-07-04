@@ -10,6 +10,7 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lec.dao.AdminMenuDao;
 import com.lec.dto.AdminMenuDto;
@@ -39,6 +40,8 @@ public class MenuInsertService implements Service {
 			AdminMenuDao aDao = AdminMenuDao.getInstance();
 			int result = aDao.menuInsert(menuname, menuprice, aphoto, foodcontent);
 			if(result == AdminMenuDao.SUCCESS) {
+				HttpSession session = request.getSession();
+				session.setAttribute("menuInsert", result);
 				request.setAttribute("menuInsertResult", "메뉴 등록 성공!");
 			}else {
 				request.setAttribute("menuInsertResult", "메뉴 등록 실패!");

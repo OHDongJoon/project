@@ -199,6 +199,29 @@ public class CustomerDao {
 		}
 		return result;
 	}
+	  // 5. 회원탈퇴전 글 삭제 
+		public int withdrawal2(String cId) {
+			int result = FAIL;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = "DELETE FROM MENU_REVIEW WHERE CID =?";
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, cId);
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}finally {
+				try {
+					if(pstmt != null) pstmt.close();
+					if(conn  != null) conn.close();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			return result;
+	}
 	// 6. 회원 id 중복체크 
 	public int cIdConfirm(String cId) {
 		int result = EXISTENT;

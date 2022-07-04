@@ -13,7 +13,6 @@ public class MenuContetService implements Service {
 		int foodid = Integer.parseInt(request.getParameter("foodid"));
 		AdminMenuDao menuContent = AdminMenuDao.getInstance();
 		AdminMenuDto dto = menuContent.contentMenu(foodid);
-		System.out.println(dto);
 		request.setAttribute("menuContent", dto);
 
 	}

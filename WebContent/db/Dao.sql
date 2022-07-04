@@ -29,13 +29,14 @@ SELECT * FROM (SELECT ROWNUM RN, A. *FROM
 --(7) 회원수
 SELECT COUNT(*) CNT FROM CUSTOMER;
 --(8) 회원탈퇴
-DELETE FROM CUSTOMER WHERE CID ='DDD';
-SELECT * FROM CUSTOMER;
+DELETE FROM CUSTOMER WHERE CID ='AAA';
+-- 8 회원탈퇴전 글 삭제 
+DELETE FROM MENU_REVIEW WHERE CID ='AAA';
 --(9) 이메일 중복체크 
 SELECT * FROM CUSTOMER WHERE CEMAIL = 'KOK@NN.COM';
 
 ----------------------------------------------------------------------
---                  4.    MENU_REVIEW 메뉴리뷰 게시판                              --
+--                  MENU_REVIEW 메뉴리뷰 게시판                              --
 ----------------------------------------------------------------------
 
 -- (1) 글목록(startRoW 부터 endRow까지) - 글번호 , 작성이름, 등등등 ... 
@@ -55,33 +56,36 @@ SELECT COUNT(*) FROM MENU_REVIEW ;
 SELECT * FROM MENU_REVIEW;
 SELECT * FROM ADMINMENU;
 INSERT INTO MENU_REVIEW ( MID,CID, FOODID, STAR , MTITLE,MCONTENT,MPHOTO,MGROUP,MSTEP,MINDENT,MIP)
-            VALUES(MENU_REVIEW_SEQ.NEXTVAL,'BBB',2,4,'흑돼지','넘맛',NULL,
+            VALUES(MENU_REVIEW_SEQ.NEXTVAL,'AAA',1,4,'갈치구이','넘맛',NULL,
                  MENU_REVIEW_SEQ.CURRVAL,0,0,'192.');
 INSERT INTO MENU_REVIEW ( MID,CID, FOODID, STAR , MTITLE,MCONTENT,MPHOTO,MGROUP,MSTEP,MINDENT,MIP)
-            VALUES(MENU_REVIEW_SEQ.NEXTVAL,'AAA',1,3,'흑돼지후기2','넘맛2',NULL,
+            VALUES(MENU_REVIEW_SEQ.NEXTVAL,'AAA',2,3,'흑돼지후기2','넘맛2',NULL,
                  MENU_REVIEW_SEQ.CURRVAL,0,0,'191.');
+commit;
 
 DELETE MENU_REVIEW WHERE MID='1';
 --(4) MHIT 하나 올리기 ( 1번글 조회수 하나 올리기)
 UPDATE MENU_REVIEW SET MHIT = MHIT +1 WHERE MID =1;
 --(5) MID로 글 DTO 보기 
-SELECT N.*, ANAME FROM NOTICE N, ADMIN A WHERE N.AID=A.AID AND NID=1;
+SELECT M.*, CNAME FROM MENU_REVIEW M, CUSTOMER C WHERE M.CID= C.CID AND MID=1;
 
 --(6) 글 수정하기(MID , MTITLE, MCONTNET, MPHOTO , MIP , MRDATE  
-UPDATE MENU_REVIEW SET MTITLE= '바뀐갈치후기',
+UPDATE MENU_REVIEW SET  MTITLE= '갈치구이 후기 요기밑으로 답글 들어와라 ',
                         MCONTENT = '바뀐본문',
                         MPHOTO = NULL,
                         MIP = '1111',
+                        STAR = 3,
                         MRDATE =SYSDATE
                 WHERE MID = 1;
 COMMIT;
+SELECT * FROM MENU_REVIEW;
 --(7) 글 삭제하기 (MID로 삭제하기)
 DELETE FROM MENU_REVIEW WHERE MID =1;
 
 -- 더미데이터(위의 1번글에 대한 첫번째 답변글)
 INSERT INTO MENU_REVIEW ( MID,CID,FOODID,MTITLE,MCONTENT,MPHOTO,
          MGROUP, MSTEP, MINDENT, MIP)
-   VALUES (MENU_REVIEW_SEQ.NEXTVAL,'BBB','1','갈치구이답변','저도가볼게요',NULL,
+   VALUES (MENU_REVIEW_SEQ.NEXTVAL,'BBB','1','갈치구이에대한 답변','저도가볼게요2',NULL,
             1,1,1,'192.168');
 -- 더미데이터 (위의 1번글에 대한 두번째 답변글)
 -- 답변글 추가전 STEP A 수행
@@ -90,9 +94,9 @@ UPDATE MENU_REVIEW SET MSTEP = MSTEP+1
      WHERE MGROUP = 1 AND MSTEP>0;
 INSERT INTO MENU_REVIEW (MID, CID, FOODID,MTITLE, MCONTENT,
         MGROUP, MSTEP, MINDENT, MIP)
-    VALUES(MENU_REVIEW_SEQ.NEXTVAL,'CCC','1','갈치구이답답','그럼나도',
-           1,1,1, '192.122.');
-    
+    VALUES(MENU_REVIEW_SEQ.NEXTVAL,'BBB','1','갈치구이 답답글','그럼나도',
+           1,1,1, '123123.');
+    ROLLBACK;
 ----------------------------------------------------------------------
 --                          ADMIN TABLE                             --
 ----------------------------------------------------------------------
@@ -121,12 +125,13 @@ SELECT * FROM ADMIN;
    INSERT INTO ADMINMENU ( FOODID , MENUNAME , MENUPRICE,APHOTO,FOODCONTENT)
        VALUES( ADMINMENU_SEQ.NEXTVAL,'옥돔','10000원','OK.JPG','제주산 옥돔');
 SELECT * FROM ADMINMENU;
-SELECT * FROM MENU_REVIEW;
+
+COMMIT;
 
 --(2) FOODID 로 메뉴 리스트가져오기 (메뉴보기 에서 사진 , 메뉴이름 ,평점, 가격) 
 -- 최종 
 select foodid, avg(star) from menu_review WHERE FOODID=1 group by foodid;
-select A.FOODID , A.APHOTO, A.MENUNAME,A.MENUPRICE, (SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) AVG from adminmenu A;
+select A.FOODID , A.APHOTO, A.MENUNAME,A.MENUPRICE, (SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) avg from adminmenu A;
 
 --(3) foodId 로 메뉴 상세보기 
 SELECT  APHOTO , MENUNAME , FOODCONTENT FROM ADMINMENU WHERE FOODID=1;
@@ -136,15 +141,26 @@ UPDATE ADMINMENU SET MENUNAME ='갈치2',
                      APHOTO    ='신상',
                      FOODCONTENT = '오늘 들어와서 올려봐요'
                      WHERE FOODID =1;
+--5.(메뉴삭제)   -----------------------------child 에러 ----------------------------------------------------------
+--리뷰가 음식에 foodid 를 참조하고 있으니  먼저 삭 리뷰 삭제후 
+DELETE FROM MENU_review WHERE FOODID=1;  
+-- 음식 삭제
+DELETE FROM ADMINMENU WHERE FOODID=1;    
 
+
+SELECT * FROM ADMINMENU;
+SELECT * FROM menu_review;
+COMMIT;
 SELECT  MENUNAME, MENUPRICE, APHOTO , ROUND(AVG(STAR)) FROM ADMINMENU A,  MENU_REVIEW M WHERE  A.FOODID = M.FOODID GROUP BY MENUNAME , MENUPRICE, APHOTO;
 
+SELECT  APHOTO , MENUNAME , FOODCONTENT ,MENUPRICE FROM ADMINMENU WHERE FOODID=1;
 
 --(3) 메뉴 상세보기 ( 메뉴 상세보기 에서 메뉴 
 ----------------------------------------------------------------------
 --                          ADMINMENU NOTICE  (관리자 공지사항)                           --
 ----------------------------------------------------------------------
-
+commit;
+DELETE FROM ADMINMENU WHERE FOODID=1;
 -- 작성자 이름  나오게 조인
 SELECT * FROM notice;
 SELECT  ANAME , N.*  FROM NOTICE N, ADMIN A WHERE N.AID=A.AID;

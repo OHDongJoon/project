@@ -70,35 +70,37 @@
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
-						$('tr')
-								.click(
-										function() {
-											var foodid = Number($(this)
-													.children().eq(0).text());// 0 번째 td안의 있는 text;
-											if (!isNaN(foodid)) {
-												alert(foodid);
-												location.href = '${conPath }/MenuContent.do?foodid='
-														+ foodid
-														+ '&pageNum=${pageNum}';
-											}
-										});
-					});
+	$(document).ready(function() {
+	$('tr').click( function() {
+		var foodid = Number($(this).children().eq(0).text());// 0 번째 td안의 있는 text;
+		if (!isNaN(foodid)) {
+			alert(foodid);
+		location.href = '${conPath }/MenuContent.do?foodid='+ foodid+ '&pageNum=${pageNum}';
+		}
+});
+});
 </script>
 </head>
 <body>
-	<c:if test="${not empty mAllView }">
+	<c:if test="${not empty menuInsert }">
 		<script>
-			alert('&{mAllView } 메뉴는 왔어');
+			alert('&{menuInsert } 메뉴등록 성공');
 		</script>
 	</c:if>
-	<c:if test="${ empty mAllView }">
+	
+	<c:if test="${not empty menuUpdate }">
 		<script>
-			alert('${mAllView } 메뉴 안왔어 임마');
+			alert('&{menuUpdate } 메뉴 수정 성공');
 		</script>
 	</c:if>
+	
+	<c:if test="${not empty menuDeleteResult }">
+		<script>
+			alert('&{menuDeleteResult }');
+		</script>
+	</c:if>
+	
+	
 	<div id="content_form">
 		<table>
 			<tr>
@@ -106,7 +108,7 @@
 				<th>메뉴사진</th>
 				<th>메뉴이름</th>
 				<th>메뉴가격</th>
-				<th>평점</th>
+				<th>메뉴평점</th>
 			</tr>
 			<c:forEach var="dto" items="${mAllView  }">
 				<tr>
@@ -115,7 +117,7 @@
 					<td><img src="${conPath }/MenuUp/${dto.aphoto }" width="150"></td>
 					<td>${dto.menuname }<br></td>
 					<td>(${dto.menuprice })</td>
-					<td>${dto.star }</td>
+					
 
 				</tr>
 			</c:forEach>

@@ -6,15 +6,14 @@ public class AdminMenuDto {
 	private String menuprice;
 	private String aphoto;
 	private String foodcontent;
-	private int star;
 	public AdminMenuDto() {}
-	public AdminMenuDto(int foodid, String menuname, String menuprice, String aphoto, String foodcontent, int star) {
+	public AdminMenuDto(int foodid, String menuname, String menuprice, String aphoto, String foodcontent) {
 		this.foodid = foodid;
 		this.menuname = menuname;
 		this.menuprice = menuprice;
 		this.aphoto = aphoto;
 		this.foodcontent = foodcontent;
-		this.star = star;
+	
 	}
 	public int getFoodid() {
 		return foodid;
@@ -46,16 +45,11 @@ public class AdminMenuDto {
 	public void setFoodcontent(String foodcontent) {
 		this.foodcontent = foodcontent;
 	}
-	public int getStar() {
-		return star;
-	}
-	public void setStar(int star) {
-		this.star = star;
-	}
+	
 	@Override
 	public String toString() {
 		return "AdminMenuDto [foodid=" + foodid + ", menuname=" + menuname + ", menuprice=" + menuprice + ", aphoto="
-				+ aphoto + ", foodcontent=" + foodcontent + ", star=" + star + "]";
+				+ aphoto + ", foodcontent=" + foodcontent + "]";
 	}
 	
 }
