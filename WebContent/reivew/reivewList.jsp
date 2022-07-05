@@ -8,9 +8,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<link href="${conPath }/css/reivewList.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  	$(document).ready(function(){
+  		$('tr').click(function(){
+  			var mid = Number($(this).children().eq(0).text());// 0 번째 td안의 있는 text;
+  		if(!isNaN(mid)){
+  			location.href = '${conPath }/reivewContent.do?mid='+mid+'&pageNum=${pageNum}';
+  		}
+  		});
+  	});
+</script>
 </head>
 <body>
+    <c:if test="${not empty menuReivewResult }">
+       <script>
+         alert(' ${menuReivewResult } ');
+       </script>
+    </c:if>
 	<div id ="content_form">
 	 <table>
 	   <tr>
@@ -27,8 +43,8 @@
 	       <th>글제목</th>
 	       <th>조회수</th>
 	       <th>날짜</th>
-	      
 	       <th>IP</th>
+	       <th>평점</th>
 	     </tr>
 	     
 	   <c:if test="${totCnt==0 }">
@@ -52,13 +68,23 @@
 	               </c:forEach>
 	      		
 	      		${dto.mtitle } <!-- 글제목에 a태그를 걸지 말고 query 로 tr을 클릭하면 상세 보기 페이지로 -->
-	      			
-	         </td>
-	         <td>${dto.mhit }</td>
+	      			 <td>${dto.mhit }</td>
 	         <td><fmt:formatDate value="${dto.mrdate }" type="date" dateStyle="short"/></td>
-		     <td>${dto.mip }</td>
-	       </tr>
+	      			 <td>${dto.mip }</td>
+	     
+	           <td>
+	         <c:forEach var="i" begin="1" end="${dto.star }">
+	           <c:if test="${i !=dto.star }"><img src="${conPath }/img/star.png" width=15px;></c:if>
+	           <c:if test="${i == dto.star }"><img src="${conPath }/img/star.png" width=15px;></c:if>
+	         </c:forEach>
+	      </td>
+	        </tr>
 	      </c:forEach>
+	        
+	         
+	         
+		  
+		    
 	 </c:if>
 	 </table>
 	 <div class ="paging">
@@ -78,9 +104,7 @@
 		</c:if>
 	 </div>
 </div>
-<jsp:include page="../main/footer.jsp"/>
-<%-- <c:if test="${not empty dto.mphoto }">
-		      		<img src="https://cdn-icons-png.flaticon.com/512/5088/5088374.png" width="10">
-		      	</c:if> --%>
+<%-- <jsp:include page="../main/footer.jsp"/> --%>
+
 </body>
 </html>

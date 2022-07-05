@@ -139,7 +139,7 @@ public class MenuReivewDao {
 			pstmt.setString(5, mcontent);
 			pstmt.setString(6, mphoto);
 			pstmt.setString(7, mip);
-
+            result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -197,7 +197,7 @@ public class MenuReivewDao {
 				int mstep = rs.getInt("mstep");
 				int mindent = rs.getInt("mindent");
 				String mip = rs.getString("mip");
-				dto = new MenuReivewDto(mid,cname, cid, foodid, star, mtitle, mcontent, mphoto, mrdate, mhit, mgroup, mstep,
+				dto = new MenuReivewDto(mid, cid,cname, foodid, star, mtitle, mcontent, mphoto, mrdate, mhit, mgroup, mstep,
 						mindent, mip);
 			}
 		} catch (SQLException e) {
@@ -264,7 +264,7 @@ public class MenuReivewDao {
 		return dto;
 	}
 	// 6.  글 수정하기()
-	public int modifyBoard(int mid , int  star, String mtitle, String mcontent, String mphoto, String mip) {
+	public int modifyReivew(int mid ,  String mtitle, String mcontent, String mphoto, String mip) {
 		int result = FAIL;
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
@@ -272,9 +272,8 @@ public class MenuReivewDao {
 				"                        MCONTENT = ?," + 
 				"                        MPHOTO = ?," + 
 				"                        MIP = ?," + 
-				"                        STAR = ?," + 
 				"                        MRDATE =SYSDATE" + 
-				"                WHERE MID = ?";
+				"                     WHERE MID = ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -282,8 +281,7 @@ public class MenuReivewDao {
 			pstmt.setString(2, mcontent);
 			pstmt.setString(3, mphoto);
 			pstmt.setString(4, mip);
-			pstmt.setInt(5, star);
-			pstmt.setInt(6, mid);
+			pstmt.setInt(5, mid);
 			result = pstmt.executeUpdate();
 			System.out.println(result==SUCCESS? "후기수정성공":"글수정실패");
 		} catch (SQLException e) {
@@ -297,15 +295,20 @@ public class MenuReivewDao {
 		return result;
 	}
 	// 7.글삭제
-	public int deleteReivew(int mid) {
+	public int deleteReivew(int mgroup, int mstep , int mindent) {
 		int result = FAIL;
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM MENU_REVIEW WHERE MID=?";
+		String sql = "DELETE FROM MENU_REVIEW WHERE MGROUP = ? AND (MSTEP>=? AND  "
+				+ "MSTEP<(select NVL(MIN(MSTEP),9999) FROM MENU_REVIEW WHERE MGROUP=? AND MSTEP>? AND MINDENT<=?))";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mid);
+			pstmt.setInt(1, mgroup);
+			pstmt.setInt(2, mstep);
+			pstmt.setInt(3, mgroup);
+			pstmt.setInt(4, mstep);
+			pstmt.setInt(5, mindent);
 			result = pstmt.executeUpdate();
 			System.out.println(result==SUCCESS? "글삭제성공":"글삭제실패");
 		} catch (SQLException e) {
@@ -341,7 +344,7 @@ public class MenuReivewDao {
 	}
 	// 9. 답변글 쓰기 MID, CID, FOODID,MTITLE, MCONTENT, MPHOTO
 	//MGROUP, MSTEP, MINDENT, MIP)
-	public int replyReivew(int mid , String cid , int foodid , String mtitle , String mcontent , String mphoto,
+	public int replyReivew( String cid , int foodid, String mtitle , String mcontent , 
 			int mgroup , int mstep , int mindent , String mip) {
 		preReplyStepA(mgroup, mstep); // 답변글 저장전 step a 먼저 수행
 		// mgroup , mstep , mindent 원글정보
@@ -349,10 +352,10 @@ public class MenuReivewDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO MENU_REVIEW (MID, CID, FOODID,MTITLE, MCONTENT," + 
-				"        MGROUP, MSTEP, MINDENT, MIP)" + 
-				"    VALUES(MENU_REVIEW_SEQ.NEXTVAL,?,?,?,?," + 
-				"           ?,?,?, ?)";
+		String sql = "INSERT INTO MENU_REVIEW ( MID,CID,FOODID,MTITLE,MCONTENT," + 
+				"         MGROUP, MSTEP, MINDENT, MIP)" + 
+				"   VALUES (MENU_REVIEW_SEQ.NEXTVAL,?,?,?,?," + 
+				"            ?,?,?,?)";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -377,6 +380,7 @@ public class MenuReivewDao {
 		}
 		return result;
 	}
+	
 }
 
 

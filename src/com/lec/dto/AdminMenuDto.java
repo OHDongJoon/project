@@ -6,14 +6,22 @@ public class AdminMenuDto {
 	private String menuprice;
 	private String aphoto;
 	private String foodcontent;
+	private double avg;
 	public AdminMenuDto() {}
-	public AdminMenuDto(int foodid, String menuname, String menuprice, String aphoto, String foodcontent) {
+	public AdminMenuDto(int foodid, String menuname, String menuprice, String aphoto, String foodcontent, double avg) {
 		this.foodid = foodid;
 		this.menuname = menuname;
 		this.menuprice = menuprice;
 		this.aphoto = aphoto;
 		this.foodcontent = foodcontent;
+		this.avg = avg;
 	
+	}
+	public double getAvg() {
+		return avg;
+	}
+	public void setAvg(double avg) {
+		this.avg = avg;
 	}
 	public int getFoodid() {
 		return foodid;

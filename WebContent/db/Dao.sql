@@ -46,7 +46,7 @@ SELECT * FROM
     (SELECT ROWNUM RN, A. * FROM
     (SELECT  M.*, CNAME FROM MENU_REVIEW M, CUSTOMER C WHERE M.CID=C.CID
             ORDER BY MGROUP DESC, MSTEP) A)
-    WHERE RN BETWEEN 1 AND 5;
+    WHERE RN BETWEEN 1 AND 11;
     ROLLBACK;
 
 --(2) 글 갯수
@@ -64,10 +64,11 @@ INSERT INTO MENU_REVIEW ( MID,CID, FOODID, STAR , MTITLE,MCONTENT,MPHOTO,MGROUP,
 commit;
 
 DELETE MENU_REVIEW WHERE MID='1';
+
 --(4) MHIT 하나 올리기 ( 1번글 조회수 하나 올리기)
 UPDATE MENU_REVIEW SET MHIT = MHIT +1 WHERE MID =1;
 --(5) MID로 글 DTO 보기 
-SELECT M.*, CNAME FROM MENU_REVIEW M, CUSTOMER C WHERE M.CID= C.CID AND MID=1;
+SELECT M.*, CNAME FROM MENU_REVIEW M, CUSTOMER C WHERE M.CID= C.CID AND foodid=1;
 
 --(6) 글 수정하기(MID , MTITLE, MCONTNET, MPHOTO , MIP , MRDATE  
 UPDATE MENU_REVIEW SET  MTITLE= '갈치구이 후기 요기밑으로 답글 들어와라 ',
@@ -78,14 +79,16 @@ UPDATE MENU_REVIEW SET  MTITLE= '갈치구이 후기 요기밑으로 답글 들�
                         MRDATE =SYSDATE
                 WHERE MID = 1;
 COMMIT;
-SELECT * FROM MENU_REVIEW;
+SELECT * FROM MENU_REVIEW where foodid = 2;
 --(7) 글 삭제하기 (MID로 삭제하기)
+DELETE FROM FILEBOARD WHERE FGROUP = 124 AND (FSTEP>=0 AND FSTEP<(select NVL(MIN(FSTEP),9999) FROM FILEBOARD WHERE FGROUP=124 AND FSTEP>0 AND FINDENT<=0));
+DELETE FROM MENU_REVIEW WHERE MGROUP = 14 AND (MSTEP>=0 AND  MSTEP<(select NVL(MIN(MSTEP),9999) FROM MENU_REVIEW WHERE MGROUP=14 AND MSTEP>0 AND MINDENT<=0));
 DELETE FROM MENU_REVIEW WHERE MID =1;
-
+SELECT * FROM MENU_REVIEW;
 -- 더미데이터(위의 1번글에 대한 첫번째 답변글)
-INSERT INTO MENU_REVIEW ( MID,CID,FOODID,MTITLE,MCONTENT,MPHOTO,
+INSERT INTO MENU_REVIEW ( MID,CID,FOODID,MTITLE,MCONTENT,
          MGROUP, MSTEP, MINDENT, MIP)
-   VALUES (MENU_REVIEW_SEQ.NEXTVAL,'BBB','1','갈치구이에대한 답변','저도가볼게요2',NULL,
+   VALUES (MENU_REVIEW_SEQ.NEXTVAL,'BBB','1','갈치구이에대한 답변','저도가볼게요2',
             1,1,1,'192.168');
 -- 더미데이터 (위의 1번글에 대한 두번째 답변글)
 -- 답변글 추가전 STEP A 수행
@@ -131,7 +134,8 @@ COMMIT;
 --(2) FOODID 로 메뉴 리스트가져오기 (메뉴보기 에서 사진 , 메뉴이름 ,평점, 가격) 
 -- 최종 
 select foodid, avg(star) from menu_review WHERE FOODID=1 group by foodid;
-select A.FOODID , A.APHOTO, A.MENUNAME,A.MENUPRICE, (SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) avg from adminmenu A;
+select A.FOODID , A.APHOTO, A.MENUNAME,A.MENUPRICE, NVL((SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID),-1) avg from adminmenu A;
+
 
 --(3) foodId 로 메뉴 상세보기 
 SELECT  APHOTO , MENUNAME , FOODCONTENT FROM ADMINMENU WHERE FOODID=1;

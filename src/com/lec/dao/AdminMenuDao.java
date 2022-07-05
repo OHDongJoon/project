@@ -74,9 +74,7 @@ public class AdminMenuDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select A.APHOTO, A.MENUNAME,A.MENUPRICE, A.FOODID,"
-				+ "(SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID) "
-				+ "STAR FROM ADMINMENU A";
+		String sql = "SELECT A.FOODID , A.APHOTO, A.MENUNAME,A.MENUPRICE, NVL((SELECT AVG(STAR) FROM MENU_REVIEW WHERE FOODID=A.FOODID GROUP BY FOODID),-1) AVG FROM ADMINMENU A";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -86,7 +84,8 @@ public class AdminMenuDao {
 				String menuname = rs.getString("menuname"); // 메뉴이름
 				String menuprice = rs.getString("menuprice"); // 메뉴가격
 				int foodid = rs.getInt("foodid"); // 메뉴번호 시퀀스
-				menus.add(new AdminMenuDto(foodid, menuname, menuprice, aphoto, null));
+				double avg = rs.getDouble("avg");
+				menus.add(new AdminMenuDto(foodid, menuname, menuprice, aphoto, null, avg));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -122,7 +121,7 @@ public class AdminMenuDao {
 				String aphoto = rs.getString("aphoto");
 				String menuname = rs.getString("menuname");
 				String foodcontent = rs.getString("foodcontent");
-				dto = new AdminMenuDto(foodid, menuname, null, aphoto, foodcontent);
+				dto = new AdminMenuDto(foodid, menuname, null, aphoto, foodcontent, 0);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -241,7 +240,7 @@ public class AdminMenuDao {
 				String menuname = rs.getString("menuname");
 				String foodcontent = rs.getString("foodcontent");
 				String menuprice = rs.getString("menuprice");
-				dto = new AdminMenuDto(foodid, menuname, menuprice, aphoto, foodcontent);
+				dto = new AdminMenuDto(foodid, menuname, menuprice, aphoto, foodcontent,0);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

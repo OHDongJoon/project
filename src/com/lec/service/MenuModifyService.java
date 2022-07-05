@@ -38,7 +38,7 @@ public class MenuModifyService implements Service {
 			String dbAphoto = mRequest.getParameter("dbAphoto");
 			aphoto = aphoto == null? dbAphoto : aphoto;
 			AdminMenuDao mDao = AdminMenuDao.getInstance();
-			AdminMenuDto menudto = new AdminMenuDto(foodid, menuname, menuprice, aphoto, foodcontent);
+			AdminMenuDto menudto = new AdminMenuDto(foodid, menuname, menuprice, aphoto, foodcontent , 0);
 			int result = mDao.updateMenu(menudto);
 			if(result == AdminMenuDao.SUCCESS) { 
 				HttpSession session = request.getSession();

@@ -31,7 +31,13 @@ import com.lec.service.NoticeListService;
 import com.lec.service.NoticeModifyService;
 import com.lec.service.NoticeModifyViewService;
 import com.lec.service.NoticeWriteService;
+import com.lec.service.ReivewContentService;
+import com.lec.service.ReivewDeleteService;
 import com.lec.service.ReivewListService;
+import com.lec.service.ReivewModifyService;
+import com.lec.service.ReivewModifyViewService;
+import com.lec.service.ReivewReplyService;
+import com.lec.service.ReivewReplyViewService;
 import com.lec.service.ReivewWriteService;
 import com.lec.service.Service;
 
@@ -184,7 +190,7 @@ public class CustomerController extends HttpServlet {
 			service = new NoticeModifyService();
 			service.execute(request, response);
 			viewPage = "NoticeList.do";
-		}else if(com.equals("/noticeDelete.do")) { // 글삭제
+		}else if(com.equals("/noticeDelete.do")) { // 공지글삭제
 			service = new NoticeDeleteService();
 			service.execute(request, response);
 			viewPage = "NoticeList.do";
@@ -195,13 +201,39 @@ public class CustomerController extends HttpServlet {
 			service = new ReivewListService();
 			service.execute(request, response);
 			viewPage = "reivew/reivewList.jsp";
-		}else if(com.equals("/reivewWrite.do")) {
+		}else if(com.equals("/reivewWrite.do")) {  // 리뷰 처리 
 			service = new ReivewWriteService();
 			service.execute(request, response);
 			viewPage ="reivewList.do";
-		}else if(com.equals("/reivewWriteView.do")) {
+		}else if(com.equals("/reivewWriteView.do")) { // 리뷰쓰기 화면
 			viewPage = "reivew/reivewWrite.jsp";
+		}else if(com.equals("/reivewContent.do")) { // 리뷰 상세보기 
+			service = new ReivewContentService();
+			service.execute(request, response);
+			viewPage = "reivew/reivewContent.jsp";
+			
+		}else if(com.equals("/reivewModifyView.do")) { // 리뷰 수정화면
+			service = new ReivewModifyViewService();
+			service.execute(request, response);
+			viewPage = "reivew/reivewModify.jsp";
+		}else if(com.equals("/ReivewModify.do")) { // 리뷰 수정 처리 
+			service = new ReivewModifyService();
+			service.execute(request, response);
+			viewPage = "reivewList.do";
+		}else if(com.equals("/reivewReplyView.do")) { // 답변글 화면 
+			service = new ReivewReplyViewService();
+			service.execute(request, response);
+			viewPage = "reivew/reivewReply.jsp";
+		}else if(com.equals("/reivewReply.do")) { // 답변글 처리 
+			service = new ReivewReplyService();
+			service.execute(request, response);
+			viewPage = "reivewList.do";
+		}else if(com.equals("/reivewDelete.do")) { // 글 삭제 
+			service = new ReivewDeleteService();
+			service.execute(request, response);
+			viewPage = "reivewList.do";
 		}
+			
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

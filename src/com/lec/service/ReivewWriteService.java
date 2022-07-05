@@ -52,11 +52,14 @@ public class ReivewWriteService implements Service {
 				int star = Integer.parseInt( mRequest.getParameter("star"));
 				String mtitle = mRequest.getParameter("mtitle");
 				String mcontent = mRequest.getParameter("mcontent");
-				String mip = mRequest.getParameter("mip");
+				String mip = request.getRemoteAddr();
 				mphoto = mphoto == null ? "NOIMG.JPG" : mphoto;
 				MenuReivewDao reivewDao = MenuReivewDao.getInstance();
 				int result =  reivewDao.writeReivew(cid, foodid, star, mtitle, mcontent, mphoto, mip);
+				System.out.println(result);
 				if(result == MenuReivewDao.SUCCESS) {// 글쓰기 확인
+					HttpSession session = request.getSession();
+					session.setAttribute("reivew", result);
 					request.setAttribute("menuReivewResult", "후기 쓰기 성공");
 				}else {
 					request.setAttribute("menuReivewResult", "후기 쓰기 실패 ");
