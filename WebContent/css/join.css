@@ -1,4 +1,7 @@
 @charset "UTF-8";
+#content_form {
+	margin-top : 200px;
+}
 caption {
 	text-align: center;
 	 font-size: 2em;

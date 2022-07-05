@@ -16,7 +16,7 @@
    
 }
 header{
-	 font-family: 'Gugi', cursive;
+	font-family: 'Gugi', cursive;
     border-top: solid 2px black;
     background: var(--color-beige);
     position: fixed;

@@ -148,7 +148,7 @@
 			</div>
 			<div class="create">
 			<input class="but3" type="submit" value="회원가입" >
-			<input class="but4" type="button" value="가입취소" onclick="history.go(-1)">
+			<input class="but4" type="button" value="뒤로가기" onclick="history.go(-1)">
 		</div>
 		</div>
 	</form>

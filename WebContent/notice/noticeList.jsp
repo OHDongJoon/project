@@ -8,27 +8,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<link href="${conPath }/css/noticeList.css" rel="stylesheet">
 	<style>
-	#content_form {
-			width: 800px; height:470px;
-			margin: 300px auto 0px;
-		}
-		#content_form table tr { height: 10px;}
-		#content_form table {border: 2px solid pink; width:90%; margin: 0px auto;}
-#content_form table tr { background-color: #FFE271; height:40px; }
-#content_form table tr:hover { background-color: orange;
-	cursor: pointer;
-}
-#content_form td, #content_form th {text-align: center; padding:5px; }
-#content_form caption {font-size: 18px; padding:10px;}
-#content_form h2, #content_form b{text-align: center; color:red;}
-#content_form a { text-decoration: none; color:black}
-#content_form .left{text-align: left;}
-#content_form .paging {text-align: center;}
-#content_form input:not(.btn), #content_form textarea {
-	width: 90%;
-}
+	
+
 	</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -70,9 +53,60 @@ $(document).ready(function(){
       alert('글 삭제 실패');
      </script>
   </c:if>
-  
-<jsp:include page="../main/header.jsp"/>
-<div id ="content_form">
+
+      
+ <div class="board_wrap">
+   <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+        </div>
+    <div class="board_list_wrap">
+       <div class="board_list">
+       <div class="top">
+	     <div class="num">글번호</div>
+	     <div class="title">작성자</div>
+	     <div class="writer">제목</div>
+	     <div class="date">날짜</div>
+	     <div class="count">IP</div>
+	  </div>  
+	  <div>
+	     <c:if test="${noticetotCnt==0 }">
+         <div>공지글이 없습니다</div>
+        </c:if>
+        <c:if test="${noticetotCnt != 0 }"> 
+         <c:forEach items="${noticeList }" var="dto">
+         <div>${dto.nid }</div>
+	     <div>${dto.aname }</div>
+	     <div><a href="${conPath }/noticeContent.do?nid=${dto.nid }">${dto.atitle }</a></div>
+	     <div><fmt:formatDate value="${dto.ardate }" type="date" dateStyle="short"/></div>
+          <div> ${dto.aip } </div>
+         </c:forEach>
+        </c:if> 
+	  </div> <!-- 글목록 -->
+     </div> <!-- board_list -->
+     <!-- 페이징 -->
+     <div class="board_page">
+     <c:if test="${startPage > BLOCKSIZE }">
+			 <a href="${conPath }/NoticeList.do?pageNum=${startPage-1}" class="bt prev">◁</a> 
+		</c:if>
+		<c:forEach var="i" begin="${startPage }" end="${endPage }">
+			<c:if test="${i == pageNum }">
+				<b> [ ${i } ] </b>
+			</c:if>
+			<c:if test="${i != pageNum }">
+				[ <a href="${conPath }/NoticeList.do?pageNum=${i}"> ${i } </a> ]
+			</c:if>
+		</c:forEach>
+		<c:if test="${endPage<pageCnt }">
+		  [ <a href="${conPath }/NoticeList.do?pageNum=${endPage+1}" class="bt next"> ▷ </a> ]
+		</c:if>
+     </div>
+   </div> <!--  board_list_wrap-->
+ </div> <!--  board warp -->
+   
+</body>
+</html>
+<%-- <div id ="content_form">
   <table>
   <tr>
    <td>
@@ -80,10 +114,11 @@ $(document).ready(function(){
      </td>
    </tr>
   </table>
+  <!-- nid aname atitle rdate aip-->
   <br>
   <table>
   <tr>
-     <th>글번호</th><!-- nid aname atitle rdate aip-->
+     <th>글번호</th>
      <th>작성자</th>
      <th>제목</th>
      <th>날짜</th>
@@ -127,6 +162,4 @@ $(document).ready(function(){
 		  [ <a href="${conPath }/NoticeList.do?pageNum=${endPage+1}"> 다음 </a> ]
 		</c:if>
 	 </div>
-</div>
-</body>
-</html>
+</div> --%>

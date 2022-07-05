@@ -35,6 +35,7 @@
        <label for="password">비밀번호</label>
      </div>
       <input type="submit" value="로그인"  >
+      <input class="but4" type="button" value="뒤로가기" onclick="history.go(-1)">
   
  </form>
 </body>

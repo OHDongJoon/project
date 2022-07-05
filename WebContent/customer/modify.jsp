@@ -112,11 +112,11 @@ $(document).ready(function(){
 					</table>
 				</div>
 				<div class="create">
-					<input type="submit" value="정보수정" class="but3"> <input
-						type="reset" value="초기화" class="but4"> <input
-						type="button" value="회원탈퇴"
-						onclick="location.href='${conPath }/withdrawalView.do'"
-						class="but4">
+					<input type="submit" value="정보수정" class="but3"> 
+					<input type="reset" value="초기화" class="but4"> 
+					<input type="button" value="회원탈퇴"onclick="location.href='${conPath }/withdrawalView.do'"class="but4">
+					<input class="but4" type="button" value="뒤로가기" onclick="history.go(-1)">
+					
 
 				</div>
 			</div>
