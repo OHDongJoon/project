@@ -17,7 +17,7 @@
             <strong>공지사항</strong>
             <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
         </div>
-       </div>
+      
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
@@ -43,9 +43,10 @@
              <div class="bt_wrap">
              
                 <input type="submit" class="on" value="글쓰기">
-                <a href="${conPath }/NoticeList.do" class="on">목록</a>
+                <input type="button" value="목록"  class="btn"onclick="location='${conPath}/NoticeList.do?pageNum=${param.pageNum }'">
             </div>
           </div>
+           </div>
       <%--  <tr>
          <th>작성자id</th>
            <td><input type="text" name="aid" required="required"></td>

@@ -8,43 +8,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<link href="${conPath }/css/noticeList.css" rel="stylesheet">
 </head>
 <body><!-- Nmodify 작성자 id  작성자  제목  본문 -->
-	 <div id="content_form">
+	 
 	<form action="${conPath }/noticeModify.do" method="post">
 	   <input type="hidden" name="pageNum" value="${param.pageNum }">
 	   <input type="hidden" name="nid" value="${nContent.nid }">
-	   <table>
-	     <caption>${nContent.nid }번 공지글 수정</caption>
-	    <tr>
-	       <th>작성자</th>
-	         <td><input type="text" required="required" size="30"
-	             value="${nContent.aname } (${nContent.aid })" readonly="readonly">
-	          </td>
-	    </tr>
-	    
-	    <tr>
-	      <th>제목</th>
-	      <td><input type="text" name="atitle"  required="required" size="30"
-	                   value="${nContent.atitle }"></td>
-	    </tr>
-	    
-	      <tr>
-	         <th>본문</th>
-			 <td><textarea rows="5" cols="32" 
-		     name="acontent">${nContent.acontent }</textarea></td>
-		  </tr>
-		  
-		  <tr>
-		     <td colspan="3">
-		       <input type="submit" value="수정" class="btn">
-			   <input type="button" value="목록"  class="btn"onclick="location='${conPath}/NoticeList.do?pageNum=${param.pageNum }'">
-		       <input type="reset" value="이전" class="btn" onclick="history.back()">
-			 </td>
-		  </tr>
-	   </table>
+	    <div class="board_wrap">
+        <div class="board_title">
+	     <strong>${nContent.nid }번 공지글 수정</strong>
+	         <p>공지사항 수정 하세요 </p>
+	    </div>
+	    <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                  <dl>
+                        <dt>제목</dt>
+                        <dd><input type="text"  name="atitle" value="${nContent.atitle }" required="required" placeholder="제목 입력"></dd>
+                    </dl>
+	            </div> <!-- title 제목  -->
+	            <div class="info">
+	               <dl>
+                        <dt>글쓴이</dt>
+                        <dd><input type="text"  name="aname" value="${nContent.aname }" required="required" placeholder="글쓴이 입력"></dd>
+                    </dl>
+	                <dl>
+                        <dt>아이디</dt>
+                        <dd><input type="text"  name="aid" value="${nContent.aid }" required="required" placeholder="비밀번호 입력"></dd>
+                    </dl>
+	            </div> <!-- info -->
+	                <div class="cont">
+	                   <textarea placeholder="내용 입력" name = "acontent"   required="required"></textarea>
+	                </div>
+	            </div> <!--  board_write -->
+	                <div class="bt_wrap">
+	              		<input type="submit" value="수정" class="btn">
+			      		<input type="button" value="목록"  class="btn"onclick="location='${conPath}/NoticeList.do?pageNum=${param.pageNum }'">
+	                </div>
+	         </div> <!-- board_write_wrap -->
+	   </div> <!-- board_wrap -->
 	   </form>
-	</div>
 </body>
 </html>

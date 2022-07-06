@@ -35,75 +35,84 @@
 		 <c:if test="${empty customer }"><a href="${conPath }/loginView.do">글쓰기는 사용자 로그인 이후에만 가능합니다</a></c:if>
 	</td></tr>
 	 </table>
+	 </div>
 	 <br>
-	 <table>
-	    <tr>
-	       <th>글번호</th>
-	       <th>작성자</th>
-	       <th>글제목</th>
-	       <th>조회수</th>
-	       <th>날짜</th>
-	       <th>IP</th>
-	       <th>평점</th>
-	     </tr>
-	     
-	   <c:if test="${totCnt==0 }">
-	      <tr>
-	        <td colspan="6"> 글이 없습니다</td>
-	      </tr>
-	     </c:if>
-	     
-	  <c:if test="${totCnt != 0 }">
-	      <c:forEach items="${reivewList }" var="dto">
+	<div class="board_wrap"> <!-- content_form -->
+   <div class="board_title"> 
+            <strong>후기 </strong>
+            <p>후기 보고 가세요 ~</p>
+        </div>
+    <div class="board_list_wrap"> <!-- table -->
+       <div class="board_list">
+        
+       <div class="top">
+	
+	       <div class="num">글번호</div>
+	       <div class="num">작성자</div>
+	       <div class="title">글제목</div>
+	       <div class="num">조회수</div>
+	       <div class="date">날짜</div>
 	      
-	       <tr>
-	         
-	            <td>${dto.mid }</td>
-	            <td>${dto.cname }</td>
-	            
-	         <td class="left">
-	               <c:forEach var="i" begin="1" end="${dto.mindent }">
-	                  <c:if test="${i==dto.mindent }">└</c:if>
-	                  <c:if test="${i != dto.mindent }"> &nbsp; &nbsp;</c:if>
-	               </c:forEach>
-	      		
-	      		${dto.mtitle } <!-- 글제목에 a태그를 걸지 말고 query 로 tr을 클릭하면 상세 보기 페이지로 -->
-	      			 <td>${dto.mhit }</td>
-	         <td><fmt:formatDate value="${dto.mrdate }" type="date" dateStyle="short"/></td>
-	      			 <td>${dto.mip }</td>
-	     
-	           <td>
-	         <c:forEach var="i" begin="1" end="${dto.star }">
-	           <c:if test="${i !=dto.star }"><img src="${conPath }/img/star.png" width=15px;></c:if>
-	           <c:if test="${i == dto.star }"><img src="${conPath }/img/star.png" width=15px;></c:if>
-	         </c:forEach>
-	      </td>
-	        </tr>
-	      </c:forEach>
+	       <div class="count">평점</div>
+	 </div>
+	 <div>
+		 <c:if test="${noticetotCnt eq 0 }">
+		    	<div class="num"></div>
+			    <div class="title">후기가 없습니다</div>
+			    <div class="writer"></div>
+			    <div class="date"></div>
+			    <div class="count"></div>
+		</c:if>
+		<c:if test="${totCnt != 0 }">
+	      <c:forEach items="${reivewList }" var="dto">
+	      <tr>
+	      <div class="num">${dto.mid }</div>
+	      <div class="writer"> ${dto.cname }</div>
+	        <c:forEach var="i" begin="1" end="${dto.mindent }">
+	          <div class="num2">
+	            <c:if test="${i==dto.mindent }">└</c:if>
+	            <c:if test="${i != dto.mindent }"> &nbsp; &nbsp; </c:if>
+	           </div>
+	           </c:forEach>
+	         <div class="title"><a href="${conPath }/reivewContent.do?mid=${dto.mid }&pageNum=${pageNum}">${dto.mtitle }</a></div>
+      	<div class="num">${dto.mhit }</div>
+	      	<div class="date"><fmt:formatDate value="${dto.mrdate }" type="date" dateStyle="short"/></div>
 	        
-	         
-	         
-		  
-		    
-	 </c:if>
-	 </table>
-	 <div class ="paging">
+	          <c:forEach var="i" begin="1" end="${dto.star }">
+	          <div class="star">
+	           <c:if test="${i !=dto.star }"><img  src="${conPath }/img/star.png" width=15px;></c:if>
+	           <c:if test="${i == dto.star }"><img src="${conPath }/img/star.png" width=15px;></c:if>
+	           </div>
+	         </c:forEach>
+	            <br>
+	      </c:forEach>
+	   </c:if>
+	 	</div> <!-- div 글목록 -->
+	</div>  <!--board_list -->
+	  <!-- 페이징 -->
+	 <div class ="board_page">
 	     <c:if test="${startPage > BLOCKSIZE }">
-			[ <a href="${conPath }/reivewList.do?pageNum=${startPage-1}"> 이전 </a> ]
+			[ <a href="${conPath }/reivewList.do?pageNum=${startPage-1}" class="bt prev"> ◁ </a> ]
 		</c:if>
 		<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i == pageNum }">
-				<b> [ ${i } ] </b>
+				<a href="#" class="num on">[ ${i } ] </a>
 			</c:if>
 			<c:if test="${i != pageNum }">
-				[ <a href="${conPath }/reivewList.do?pageNum=${i}"> ${i } </a> ]
+				[ <a href="${conPath }/reivewList.do?pageNum=${i}" class="num"> ${i } </a> ]
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage<pageCnt }">
-		  [ <a href="${conPath }/reivewList.do?pageNum=${endPage+1}"> 다음 </a> ]
+		  [ <a href="${conPath }/reivewList.do?pageNum=${endPage+1}" class="bt next"> ▷ </a> ]
 		</c:if>
 	 </div>
-</div>
+	  <div class="bt_wrap">
+	  <%-- <c:if test="${not empty admin }"><a href="${conPath }/NoticeWriteView.do" class="on">공지글등록</a></c:if> --%>
+              <a href="${conPath }/main.do" class="on">홈</a> <!--<a href="#">수정</a>-->
+            </div>
+	</div> <!--  board_list_wrap-->
+	</div><!--  board warp -->
+	 
 <%-- <jsp:include page="../main/footer.jsp"/> --%>
 
 </body>

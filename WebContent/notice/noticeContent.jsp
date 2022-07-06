@@ -61,17 +61,15 @@
              ${nContent.acontent }
              </div> <!-- cont 본문 -->
              </div> <!-- board_view_wrap -->
-          <div class="bt_wrqp">
+          <div class="bt_wrap">
           <c:if test="${admin.aId eq nContent.aid}">
-          <button onclick="location='${conPath}/noticeModifyView.do?nid=${nContent.nid}&pageNum=${param.pageNum }"class="on">수정</button>
-           	
-           
-             </c:if>
+          <input type="button" value="수정" onclick="location='${conPath}/noticeModifyView.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">
+          </c:if>
            <c:if test="${admin.aId eq nContent.aid or not empty admin }">
-               <button onclick="location='${conPath}/noticeDelete.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">삭제</button>
+            <input type="button" value="삭제"  class="btn" onclick="location='${conPath}/noticeDelete.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">
            </c:if>
-           <a href="${conPath }/NoticeList.do?pageNum=${param.pageNum }" class="on">목록</a>
-           <a href="${conPath }/main.do" class="on">홈</a> <!--<a href="#">수정</a>-->
+           <input type="button" value="목록" class="btn" onclick="location='${conPath}/NoticeList.do?pageNum=${param.pageNum }'" >
+           <input type="button" value="홈"  class="btn" onclick="location='${conPath }/main.do'"> <!--<a href="#">수정</a>-->
             </div>
          
           </div> <!-- board_view_wrap -->
