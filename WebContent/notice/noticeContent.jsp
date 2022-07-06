@@ -63,7 +63,8 @@
              </div> <!-- board_view_wrap -->
           <div class="bt_wrap">
           <c:if test="${admin.aId eq nContent.aid}">
-          <input type="button" value="수정" onclick="location='${conPath}/noticeModifyView.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">
+          <input type="button" value="수정" class="btn" onclick="location='${conPath}/noticeModifyView.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">
+           <input type="button" value="목록" class="btn" onclick="location='${conPath}/NoticeList.do?pageNum=${param.pageNum }'" >
           </c:if>
            <c:if test="${admin.aId eq nContent.aid or not empty admin }">
             <input type="button" value="삭제"  class="btn" onclick="location='${conPath}/noticeDelete.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">
@@ -74,12 +75,5 @@
          
           </div> <!-- board_view_wrap -->
           </div>	<!-- board_wrap -->  
-         <%--   <div class="bt_wrap">
-	  <c:if test="${not empty admin }"><a href="${conPath }/NoticeWriteView.do" class="on">공지글등록</a></c:if>
-              <a href="${conPath }/main.do" class="on">홈</a> <!--<a href="#">수정</a>-->
-            </div> --%>
-         
-
- 
 </body>
 </html>
