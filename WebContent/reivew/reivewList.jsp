@@ -21,8 +21,7 @@
   	});
 </script>
 </head>
-<body>
-    <c:if test="${not empty menuReivewResult }">
+<c:if test="${not empty menuReivewResult }">
        <script>
          alert(' ${menuReivewResult } ');
        </script>
@@ -65,13 +64,13 @@
 		</c:if>
 		<c:if test="${totCnt != 0 }">
 	      <c:forEach items="${reivewList }" var="dto">
-	      <tr>
 	      <div class="num">${dto.mid }</div>
 	      <div class="writer"> ${dto.cname }</div>
 	        <c:forEach var="i" begin="1" end="${dto.mindent }">
 	          <div class="num2">
-	            <c:if test="${i==dto.mindent }">└</c:if>
+	            <c:if test="${i==dto.mindent }"> └</c:if>
 	            <c:if test="${i != dto.mindent }"> &nbsp; &nbsp; </c:if>
+	            
 	           </div>
 	           </c:forEach>
 	         <div class="title"><a href="${conPath }/reivewContent.do?mid=${dto.mid }&pageNum=${pageNum}">${dto.mtitle }</a></div>
@@ -114,6 +113,7 @@
 	</div><!--  board warp -->
 	 
 <%-- <jsp:include page="../main/footer.jsp"/> --%>
+
 
 </body>
 </html>

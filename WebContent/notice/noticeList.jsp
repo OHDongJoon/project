@@ -54,7 +54,7 @@ $(document).ready(function(){
      </script>
   </c:if>
 
-      
+ 
  <div class="board_wrap"> <!-- content_form -->
    <div class="board_title"> 
             <strong>공지사항</strong>
@@ -79,10 +79,11 @@ $(document).ready(function(){
 		    <div class="date"></div>
 		    <div class="count"></div>
 	    </c:if>
+
         <c:if test="${noticetotCnt != 0 }">
          <c:forEach items="${noticeList }" var="dto">
          <div class="num">${dto.nid }</div>
-	     <div  class="title"><a href="${conPath }/noticeContent.do?nid=${dto.nid }&pageNum=${pageNum}">${dto.atitle }</a></div>
+	     <div class="title"><a href="${conPath }/noticeContent.do?nid=${dto.nid }&pageNum=${pageNum}">${dto.atitle }</a></div>
 	     <div class="writer">${dto.aname }</div>
 	     <div class="date"><fmt:formatDate value="${dto.ardate }" type="date" dateStyle="short"/></div>
           <div  class="count"> ${dto.aip } </div>
@@ -91,6 +92,7 @@ $(document).ready(function(){
 	  </div> <!-- 글목록 -->
      </div> <!-- board_list -->
      <!-- 페이징 -->
+
    <div class ="board_page">
 	     <c:if test="${startPage > BLOCKSIZE }">
 			[ <a href="${conPath }/NoticeList.do?pageNum=${startPage-1}" class="bt prev"> ◁ </a> ]
@@ -124,6 +126,7 @@ $(document).ready(function(){
                 <a href="#" class="bt next">></a>
                 <a href="#" class="bt first">>></a>
             </div> -->
+ 
 </body>
 </html>
 <%-- <div id ="content_form">
