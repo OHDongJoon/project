@@ -8,8 +8,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
-	<style>
+	<link href="${conPath }/css/noticeList.css" rel="stylesheet">
+<!-- 	<style>
 		#content_form {
 			width: 800px; height:470px;
 			margin: 30px auto 0px;
@@ -29,32 +29,59 @@
 #content_form input:not(.btn), #content_form textarea {
 	width: 90%;
 }
-	</style>
+	</style> -->
 </head>
 <!-- noticeContent -->
 <body>
-  <div id="content_form">
-    <table>
-       <caption>${nContent.aname } 관리자 글</caption>
-         <tr>
-           <th>제목</th>
-           <td>${nContent.atitle }</td>
-         </tr>
-         <tr>
-           <th>본문</th>
-           <td><pre>${nContent.acontent }</pre>
-        <tr>
-           <td colspan="3" > 
-          
-             <c:if test="${admin.aId eq nContent.aid}">
-                <button onclick="location='${conPath }/noticeModifyView.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">수정</button>
+  <div class="board_wrap">
+    <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+        </div>
+        <div class="board_view_wrap">
+            <div class="board_view">
+             <div class="title">
+               ${nContent.atitle }
+             </div> <!-- title -->
+             <div class="info">
+                    <dl>
+                        <dt>번호</dt>
+                        <dd>${nContent.nid }</dd>
+                    </dl>
+                     <dl>
+                        <dt>글쓴이</dt>
+                        <dd>${nContent.aname }</dd>
+                    </dl>
+                     <dl>
+                        <dt>작성일</dt>
+                        <dd>${nContent.ardate }</dd>
+                    </dl>
+             </div> <!-- board_view -->
+             <div class="cont">
+             ${nContent.acontent }
+             </div> <!-- cont 본문 -->
+             </div> <!-- board_view_wrap -->
+          <div class="bt_wrqp">
+          <c:if test="${admin.aId eq nContent.aid}">
+          <button onclick="location='${conPath}/noticeModifyView.do?nid=${nContent.nid}&pageNum=${param.pageNum }"class="on">수정</button>
+           	
+           
              </c:if>
            <c:if test="${admin.aId eq nContent.aid or not empty admin }">
                <button onclick="location='${conPath}/noticeDelete.do?nid=${nContent.nid}&pageNum=${param.pageNum }'">삭제</button>
            </c:if>
-          <input type="button" value="목록" class="btn"
-          onclick="location='${conPath}/NoticeList.do?pageNum=${param.pageNum }'">
-    </table>
-  </div>	
+           <a href="${conPath }/NoticeList.do?pageNum=${param.pageNum }" class="on">목록</a>
+           <a href="${conPath }/main.do" class="on">홈</a> <!--<a href="#">수정</a>-->
+            </div>
+         
+          </div> <!-- board_view_wrap -->
+          </div>	<!-- board_wrap -->  
+         <%--   <div class="bt_wrap">
+	  <c:if test="${not empty admin }"><a href="${conPath }/NoticeWriteView.do" class="on">공지글등록</a></c:if>
+              <a href="${conPath }/main.do" class="on">홈</a> <!--<a href="#">수정</a>-->
+            </div> --%>
+         
+
+ 
 </body>
 </html>

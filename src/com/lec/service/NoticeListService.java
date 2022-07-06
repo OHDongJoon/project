@@ -17,7 +17,7 @@ public class NoticeListService implements Service {
 			pageNum = "1";
 		}
 		int currentPage = Integer.parseInt(pageNum);
-		final int PAGESIZE=10, BLOCKSIZE=10;
+		final int PAGESIZE=3, BLOCKSIZE=3;
 		int startRow = (currentPage-1) * PAGESIZE +1;
 		int endRow   = startRow + PAGESIZE -1;
         NoticeDao noticeDao = NoticeDao.getInstance();

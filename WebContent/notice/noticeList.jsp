@@ -55,55 +55,75 @@ $(document).ready(function(){
   </c:if>
 
       
- <div class="board_wrap">
-   <div class="board_title">
+ <div class="board_wrap"> <!-- content_form -->
+   <div class="board_title"> 
             <strong>공지사항</strong>
             <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
         </div>
-    <div class="board_list_wrap">
+    <div class="board_list_wrap"> <!-- table -->
        <div class="board_list">
+        
        <div class="top">
+       
 	     <div class="num">글번호</div>
-	     <div class="title">작성자</div>
-	     <div class="writer">제목</div>
+	     <div class="title">제목</div>
+	     <div class="writer">작성자</div>
 	     <div class="date">날짜</div>
 	     <div class="count">IP</div>
 	  </div>  
 	  <div>
-	     <c:if test="${noticetotCnt==0 }">
-         <div>공지글이 없습니다</div>
-        </c:if>
-        <c:if test="${noticetotCnt != 0 }"> 
+	    <c:if test="${noticetotCnt eq 0 }">
+	    	<div class="num"></div>
+		    <div class="title">공지사항이 없습니다</div>
+		    <div class="writer"></div>
+		    <div class="date"></div>
+		    <div class="count"></div>
+	    </c:if>
+        <c:if test="${noticetotCnt != 0 }">
          <c:forEach items="${noticeList }" var="dto">
-         <div>${dto.nid }</div>
-	     <div>${dto.aname }</div>
-	     <div><a href="${conPath }/noticeContent.do?nid=${dto.nid }">${dto.atitle }</a></div>
-	     <div><fmt:formatDate value="${dto.ardate }" type="date" dateStyle="short"/></div>
-          <div> ${dto.aip } </div>
+         <div class="num">${dto.nid }</div>
+	     <div  class="title"><a href="${conPath }/noticeContent.do?nid=${dto.nid }&pageNum=${pageNum}">${dto.atitle }</a></div>
+	     <div class="writer">${dto.aname }</div>
+	     <div class="date"><fmt:formatDate value="${dto.ardate }" type="date" dateStyle="short"/></div>
+          <div  class="count"> ${dto.aip } </div>
          </c:forEach>
         </c:if> 
 	  </div> <!-- 글목록 -->
      </div> <!-- board_list -->
      <!-- 페이징 -->
-     <div class="board_page">
-     <c:if test="${startPage > BLOCKSIZE }">
-			 <a href="${conPath }/NoticeList.do?pageNum=${startPage-1}" class="bt prev">◁</a> 
+   <div class ="board_page">
+	     <c:if test="${startPage > BLOCKSIZE }">
+			[ <a href="${conPath }/NoticeList.do?pageNum=${startPage-1}" class="bt prev"> ◁ </a> ]
 		</c:if>
 		<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i == pageNum }">
-				<b> [ ${i } ] </b>
+				<a href="#" class="num on">[ ${i } ] </a>
 			</c:if>
 			<c:if test="${i != pageNum }">
-				[ <a href="${conPath }/NoticeList.do?pageNum=${i}"> ${i } </a> ]
+				[ <a href="${conPath }/NoticeList.do?pageNum=${i}" class="num"> ${i } </a> ]
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage<pageCnt }">
 		  [ <a href="${conPath }/NoticeList.do?pageNum=${endPage+1}" class="bt next"> ▷ </a> ]
 		</c:if>
-     </div>
+	 </div>
+	  <div class="bt_wrap">
+	  <c:if test="${not empty admin }"><a href="${conPath }/NoticeWriteView.do" class="on">공지글등록</a></c:if>
+              <a href="${conPath }/main.do" class="on">홈</a> <!--<a href="#">수정</a>-->
+            </div>
    </div> <!--  board_list_wrap-->
  </div> <!--  board warp -->
-   
+   <!--  <div class="board_page">
+                <a href="#" class="bt first"><<</a>
+                <a href="#" class="bt prev"><</a>
+                <a href="#" class="num on">1</a>
+                <a href="#" class="num">2</a>
+                <a href="#" class="num">3</a>
+                <a href="#" class="num">4</a>
+                <a href="#" class="num">5</a>
+                <a href="#" class="bt next">></a>
+                <a href="#" class="bt first">>></a>
+            </div> -->
 </body>
 </html>
 <%-- <div id ="content_form">
