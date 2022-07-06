@@ -26,16 +26,7 @@
          alert(' ${menuReivewResult } ');
        </script>
     </c:if>
-	<div id ="content_form">
-	 <table>
-	   <tr>
-	     <td> 
-	       <c:if test="${not empty customer }"><a href="${conPath }/reivewWriteView.do">글쓰기</a></c:if>
-		 <c:if test="${empty customer }"><a href="${conPath }/loginView.do">글쓰기는 사용자 로그인 이후에만 가능합니다</a></c:if>
-	</td></tr>
-	 </table>
-	 </div>
-	 <br>
+	
 	<div class="board_wrap"> <!-- content_form -->
    <div class="board_title"> 
             <strong>후기 </strong>
@@ -66,14 +57,16 @@
 	      <c:forEach items="${reivewList }" var="dto">
 	      <div class="num">${dto.mid }</div>
 	      <div class="writer"> ${dto.cname }</div>
+	        
+	         <div class="title">
+	         	<a href="${conPath }/reivewContent.do?mid=${dto.mid }&pageNum=${pageNum}">
 	        <c:forEach var="i" begin="1" end="${dto.mindent }">
-	          <div class="num2">
 	            <c:if test="${i==dto.mindent }"> └</c:if>
 	            <c:if test="${i != dto.mindent }"> &nbsp; &nbsp; </c:if>
-	            
-	           </div>
-	           </c:forEach>
-	         <div class="title"><a href="${conPath }/reivewContent.do?mid=${dto.mid }&pageNum=${pageNum}">${dto.mtitle }</a></div>
+	           </c:forEach> 		
+	         		${dto.mtitle }
+	         	</a>
+	         </div>
       	<div class="num">${dto.mhit }</div>
 	      	<div class="date"><fmt:formatDate value="${dto.mrdate }" type="date" dateStyle="short"/></div>
 	        
@@ -88,6 +81,16 @@
 	   </c:if>
 	 	</div> <!-- div 글목록 -->
 	</div>  <!--board_list -->
+	<div id ="content_form">
+	 <table>
+	   <tr>
+	     <td> 
+	       <c:if test="${not empty customer }"><a href="${conPath }/reivewWriteView.do">글쓰기</a></c:if>
+		 <c:if test="${empty customer }"><a href="${conPath }/loginView.do">글쓰기는 사용자 로그인 이후에만 가능합니다</a></c:if>
+	</td></tr>
+	 </table>
+	 </div>
+	 <br>
 	  <!-- 페이징 -->
 	 <div class ="board_page">
 	     <c:if test="${startPage > BLOCKSIZE }">
