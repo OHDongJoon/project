@@ -75,6 +75,7 @@
  
 	<div id="content_form">
 		<table>
+		  
 			<tr>
 				<th>메뉴번호</th>
 				<th>메뉴사진</th>
@@ -82,14 +83,54 @@
 				<th>메뉴가격</th>
 				<th>메뉴평점</th>
 			</tr>
+
 			<c:forEach var="dto" items="${mAllView  }">
 				<tr>
-
+                    
 					<td>${dto.foodid } </td>
 					<td><img src="${conPath }/MenuUp/${dto.aphoto }" width="150"></td>
 					<td>${dto.menuname }<br></td>
-					<td>(${dto.menuprice })</td>
-				    <td>${dto.avg }</td>
+					<td>(${dto.menuprice })</td>					
+					<td>  <!--  avg  double 형 반환   -->
+						 <c:if test="${dto.avg == -1 }">
+							등록된 평점이 없습니다
+						 </c:if>
+						 <c:if test="${dto.avg >= 1 and dto.avg < 2 }">
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 </c:if>
+						 <c:if test="${dto.avg >= 2 and dto.avg < 3 }">
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 </c:if>
+						  <c:if test="${dto.avg >= 3 and dto.avg < 4 }">
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 </c:if>
+						  <c:if test="${dto.avg >= 4 and dto.avg < 5 }">
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 </c:if>
+						  <c:if test="${dto.avg == 5 }">
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	<img  src="${conPath }/img/star.png" width=15px;>
+						 	
+						 </c:if>
+					</td>
+<!-- 				   		<td> -->
+<%-- 					<c:if test=${(dto.avg >= 1) and (dto.avg < 2) }>   --%>
+<%-- 						<img  src="${conPath }/img/star.png" width=15px;> --%>
+<%-- 					</c:if> --%>
+<%-- 					<c:if test="${(dto.avg >=2) and (dto.avg < 3) }"> --%>
+<%-- 						<img  src="${conPath }/img/star.png" width=15px;> --%>
+<%-- 						<img  src="${conPath }/img/star.png" width=15px;> --%>
+<%-- 					</c:if> --%>
+<!-- 						</td> -->
 				</tr> 
 				
 			</c:forEach>

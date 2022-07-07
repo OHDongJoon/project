@@ -35,11 +35,11 @@
                         <dt>아이디</dt>
                         <dd><input type="text"  name="aid" required="required" placeholder="비밀번호 입력"></dd>
                     </dl>
-                </div>
+                </div><!-- info -->
                 <div class="cont">
                     <textarea placeholder="내용 입력" name = "acontent" required="required"></textarea>
-                </div>
-            </div>
+                </div><!-- connt -->
+            </div><!-- board_write -->
              <div class="bt_wrap">
              
                 <input type="submit" class="on" value="글쓰기">
