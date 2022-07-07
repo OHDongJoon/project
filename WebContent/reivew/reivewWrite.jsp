@@ -46,12 +46,12 @@
                 <div class="info">
                   <dl>
                       <dt>음식선택</dt>
-                     <dd><input type="checkbox" name="foodid" value="1" id="1"><label for="readind">갈치조림</label>
-					<input type="checkbox" name="foodid" value="2" id="2"><label for="cooking">두루치기</label>
-					<input type="checkbox" name="foodid" value="3" id="3"><label for="exercise">성게미역국</label>
+                     <dd><input type="checkbox" name="foodid" value="1" id="1"><label for="readind">갈치조림</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="foodid" value="2" id="2"><label for="cooking">두루치기</label> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="foodid" value="3" id="3"><label for="exercise">성게미역국</label> &nbsp;
 					<br>
-					<input type="checkbox" name="foodid" value="4" id="4"><label for="exercise">갈치구이2인</label>   
-					<input type="checkbox" name="foodid" value="5" id="5"><label for="exercise">솥밥</label>                 
+					<input type="checkbox" name="foodid" value="4" id="4"><label for="exercise">갈치구이2인</label>    &nbsp;
+					<input type="checkbox" name="foodid" value="5" id="5"><label for="exercise">솥밥</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
 				    <input type="checkbox" name="foodid" value="6" id="6"><label for="exercise">갈치구이4인</label>                 
 					              
                       </dd>
@@ -63,7 +63,8 @@
             <div class="review_rating">
             <div class="rating">
               <dl>
-              <dd><input type="checkbox" name="star" id="rating1" value="1" class="rate_radio" title="1점">
+              <dt>평점선택</dt>
+              <dd><input type="checkbox" name="star" id="rating1" value="1" class="rate_radio" title="1점"> 
                 <label for="rating1"></label>
                 <input type="checkbox" name="star" id="rating2" value="2" class="rate_radio" title="2점">
                 <label for="rating2"></label>
@@ -73,7 +74,7 @@
                 <label for="rating4"></label>
                 <input type="checkbox" name="star" id="rating5" value="5" class="rate_radio" title="5점">
                 <label for="rating5"></label></dd>
-                <dt>평점선택</dt>
+                
             </dl>
             </div> <!-- title_star -->
         </div> <!-- review_rating -->	

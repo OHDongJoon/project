@@ -14,8 +14,8 @@
    <div id="content_form">
 	<form action="${conPath }/MenuModify.do" method="post" enctype="multipart/form-data">
 	   <input type="hidden" name="pageNum" value="${param.pageNum }">
-	   <input type="hidden" name="foodid" value="${menuContent.foodid }">
-	   <input type="hidden" name="dbAphoto" value="${menuContent.aphoto }">
+	   <input type="hidden" name="foodid" value="${menuUpdate.foodid }">
+	   <input type="hidden" name="dbAphoto" value="${menuUpdate.aphoto }">
 	   <div class="board_wrap"> 
      <div class="board_title">
 	  <strong>메뉴 수정</strong>
@@ -25,14 +25,14 @@
                 <div class="title">
                     <dl>
                         <dt>메뉴이름</dt>
-                        <dd><input type="text"  name="menuname" value="${menuContentt.menuname }" required="required" placeholder="제목 입력"></dd>
+                        <dd><input type="text"  name="menuname" value="${menuUpdate.menuname }" required="required" placeholder="제목 입력"></dd>
                     </dl>
                 </div>
 	        <div class="info">
 	         
 	          <dl>
 	              <dt>메뉴가격</dt>
-	              <dd><input type="text" name="menuprice" value="${menuContentt.menuprice}" required="required"></dd>
+	              <dd><input type="text" name="menuprice" value="${menuUpdate.menuprice}" required="required"></dd>
 	          </dl>
 	          
 	          <dl>

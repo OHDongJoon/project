@@ -25,14 +25,20 @@ strong {
 	font-size: 30px;
 }
 .but4 {
-	height :35px;
-	width : 50px;
-	background-color: white;
-	border : 2px solid black;
-	text-align: center;
-	margin-left : 500px;
+
 }
-.create {
+#content_form .create {
 	widht : 100px;
 	
 }
+.but4 {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	margin-left : 400px;
+	width: 200px;
+	height: 60px;
+	font-size: 1.5em;
+	font-weight: bold;
+	background-color: #f4f0e6
+	color: white;
+	}

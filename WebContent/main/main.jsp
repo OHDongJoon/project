@@ -83,7 +83,8 @@
   <div class="container">
      
     <div class="section-title">
-      <h1 class="go1">menu</h1> 
+      <h1 class="go1">메뉴</h1> 
+     
     </div>
    
     <div class="row">

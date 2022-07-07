@@ -28,8 +28,7 @@ h2 {
 
 .intro {
 	display: table;
-	
-	width: 100%;
+	width: 1600px;
 	padding: 0;
 	background: url(../img/logo2.JPG) center center no-repeat;
 	background-color: #e5e5e5;
@@ -68,7 +67,7 @@ h2 {
 #all {
 		width:1600px;
 		height : 900px;
-		margin-left:20px; 
+		 
 		overflow:hidden;
 		box-sizing: border-box;
 	}
@@ -92,8 +91,9 @@ h2 {
 	
 	.section-title {
 		width:200px;
-		overflow:hidden;
+		float : center;
 		margin:30px auto;
+		
 	}
 	/* .go {
 	 float: right;
