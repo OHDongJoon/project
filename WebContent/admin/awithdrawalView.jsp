@@ -26,10 +26,10 @@ td {
 				<td>아이디 : ${admin.aId }</td>
 			</tr>
 			
-				<caption>탈퇴를 진행 하시겠습니까?</caption>
+				<caption>탈퇴는 슬퍼요 ㅠㅠ 그래도 진행 하시 겠습니까?</caption>
 			</table>
 			<div class="create">
-				<input class="but3" type="submit" value="탈퇴하기">
+				<input class="but3" type="submit" value="넵!탈퇴할거에요">
 				<input class="but4" type="button" value="이전" onclick="history.go(-1)" >
 			</div>
 		

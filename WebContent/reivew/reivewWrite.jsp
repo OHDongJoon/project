@@ -49,7 +49,11 @@
                      <dd><input type="checkbox" name="foodid" value="1" id="1"><label for="readind">갈치조림</label>
 					<input type="checkbox" name="foodid" value="2" id="2"><label for="cooking">두루치기</label>
 					<input type="checkbox" name="foodid" value="3" id="3"><label for="exercise">성게미역국</label>
-					<input type="checkbox" name="foodid" value="4" id="4"><label for="exercise">갈치구이</label>                 
+					<br>
+					<input type="checkbox" name="foodid" value="4" id="4"><label for="exercise">갈치구이2인</label>   
+					<input type="checkbox" name="foodid" value="5" id="5"><label for="exercise">솥밥</label>                 
+				    <input type="checkbox" name="foodid" value="6" id="6"><label for="exercise">갈치구이4인</label>                 
+					              
                       </dd>
                    </dl>
                    <dl>

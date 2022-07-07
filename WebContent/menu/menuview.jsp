@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gugi&display=swap" rel="stylesheet">
 <style>
 
-
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -55,25 +54,9 @@
 		</script>
 	</c:if>
 	
-	<%--   <h1 class="title1">교래향 식당</h1>
-  <h2 class="title2">  <br>제주의 맛을 느껴보세요 !</h2>
-  <c:forEach var="dto" items="${mAllView  }">
-  <div class="food">
-    <img src="${conPath }/MenuUp/${dto.aphoto }"width="500px" height="300px">
-    <div class="info">
- 
-    
-       <h3>${dto.foodid }</h3>
-      <h3>${dto.menuname }</h3>
-      <h3>(${dto.menuprice })</h3>
-      <p>평점</p>
-   
-     
-    </div>
-  </div>
-  </c:forEach> --%>
- 
-	<div id="content_form">
+	 <strong>메뉴</strong>
+	  <hr>
+<div id="content_form">
 		<table>
 		  
 			<tr>
@@ -88,7 +71,7 @@
 				<tr>
                     
 					<td>${dto.foodid } </td>
-					<td><img src="${conPath }/MenuUp/${dto.aphoto }" width="150"></td>
+					<td><img src="${conPath }/MenuUp/${dto.aphoto }" width="320"></td>
 					<td>${dto.menuname }<br></td>
 					<td>(${dto.menuprice })</td>					
 					<td>  <!--  avg  double 형 반환   -->
@@ -122,19 +105,14 @@
 						 	
 						 </c:if>
 					</td>
-<!-- 				   		<td> -->
-<%-- 					<c:if test=${(dto.avg >= 1) and (dto.avg < 2) }>   --%>
-<%-- 						<img  src="${conPath }/img/star.png" width=15px;> --%>
-<%-- 					</c:if> --%>
-<%-- 					<c:if test="${(dto.avg >=2) and (dto.avg < 3) }"> --%>
-<%-- 						<img  src="${conPath }/img/star.png" width=15px;> --%>
-<%-- 						<img  src="${conPath }/img/star.png" width=15px;> --%>
-<%-- 					</c:if> --%>
-<!-- 						</td> -->
-				</tr> 
-				
+					</tr>
 			</c:forEach>
 		</table>
+		
+		<div class="create">
+			<button class="but4"  onclick="location='${conPath}/main.do'">홈</button>
+		</div>	
+		
 	</div> 
 </body>
 </html>	

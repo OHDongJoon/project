@@ -8,20 +8,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<link href="${conPath }/css/menuContent.css" rel="stylesheet">
 	<!--  APHOTO , MENUNAME , FOODCONTENT  -->
 	
 </head>
 <body>
 	<div id="content_form">
 	   <table>
-	     <caption>${menuContent.foodid } 음식 상세보기</caption>
+	     <caption>${menuContent.menuname } 상세보기</caption>
 	      <tr>
 	    
 	     <th>메뉴사진</th>
 	       <td>
 	       <c:if test="${not empty menuContent.aphoto  }">
-	     <img src="${conPath }/MenuUp/${menuContent.aphoto }"  width="150">
+	     <img src="${conPath }/MenuUp/${menuContent.aphoto }"  width="500px" >
 	          
        </c:if>
 	        </td>
@@ -44,7 +44,9 @@
                 <button onclick="location='${conPath }/MenuModifyView.do?foodid=${menuContent.foodid }&pageNum=${param.pageNum }'">수정</button>
                 <button onclick="location='${conPath }/MenuDelete.do?foodid=${menuContent.foodid }&pageNum=${param.pageNum }'">삭제</button>
          </c:if>
+               <button onclick="location='${conPath }/MenuallView.do?foodid=${menuContent.foodid }&pageNum=${param.pageNum }'">뒤로가기</button>
 	    </td>
+	    </tr>
 	   </table>
 	</div>
 </body>

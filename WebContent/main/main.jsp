@@ -84,52 +84,51 @@
      
     <div class="section-title">
       <h1 class="go1">menu</h1> 
-      <p class="go">메뉴더보기</p>
-      
     </div>
+   
     <div class="row">
      <div id="all">
       <div class="col-xs-12 col-sm-4">
           <div class="features-item">
               
               <img src="${conPath }/img/DSC_9924.JPG" class="img-responsive" alt="">
-              <h3>갈치구이_4인</h3>
-              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+              <h3>갈치조림_4인</h3>
+              <p>갈치조림(대) + 보말미역국 + 솥밥 </p>
           </div>
       </div> <!--  1번  -->
       <div class="col-xs-12 col-sm-4">
           <div class="features-item">
              
-              <img src="${conPath }/img/DSC_8390.JPG" class="img-responsive" alt="">
+              <img src="${conPath }/img/DSC_8407.JPG" class="img-responsive" alt="">
               <h3>갈치구이_4인</h3>
-              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+              <p>갈치구이(대) + 성게미역국 + 솥밥</p>
           </div>
       </div>  <!--  2번 -->
       <div class="col-xs-12 col-sm-4">
           <div class="features-item">
               <img src="${conPath }/img/do.JPG" class="img-responsive" alt="">
-              <h3>갈치구이_4인</h3>
-              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+              <h3>두루치기</h3>
+              <p>두루치기 + 보말 미역국</p>
           </div>
       </div>  <!--  3본 -->
       <div class="features-item2">
-              <img src="${conPath }/img/DSC_9924.JPG" class="img-responsive" alt="">
-             <h3>갈치구이_4인</h3>
-              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+              <img src="${conPath }/img/DSC_8390.JPG" class="img-responsive" alt="">
+             <h3>갈치구이_2인</h3>
+              <p>갈치조림(중) + 보말 미역국 + 솥밥</p>
           </div>
        <!--  1번  -->
       <div class="col-xs-12 col-sm-4">
           <div class="features-item2">	
-              <img src="${conPath }/img/DSC_8390.JPG" class="img-responsive" alt="">
-              <h3>갈치구이_4인</h3>
-              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+              <img src="${conPath }/img/DSC_9954.JPG" class="img-responsive" alt="">
+              <h3>성게미역국</h3>
+              <p>성게미역국 + 솥밥추가 1000원 </p>
           </div>
       </div>  <!--  2번 -->
       <div class="col-xs-12 col-sm-4">
           <div class="features-item2">
-              <img src="${conPath }/img/do.JPG" class="img-responsive" alt="">
-              <h3>갈치구이_4인</h3>
-              <p>통갈치구이(대) + 성게미역국 + 두루치기</p>
+              <img src="${conPath }/img/bob.JPG" class="img-responsive" alt="">
+              <h3>솥밥</h3>
+              <p>따끈따끈한 솥밥</p>
           </div>
       </div>  <!--  3본 -->
       </div>

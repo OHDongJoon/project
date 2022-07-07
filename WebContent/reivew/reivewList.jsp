@@ -109,9 +109,8 @@
 		</c:if>
 	 </div>
 	  <div class="bt_wrap">
-	  <%-- <c:if test="${not empty admin }"><a href="${conPath }/NoticeWriteView.do" class="on">공지글등록</a></c:if> --%>
               <a href="${conPath }/main.do" class="on">홈</a> <!--<a href="#">수정</a>-->
-            </div>
+       </div>
 	</div> <!--  board_list_wrap-->
 	</div><!--  board warp -->
 	 

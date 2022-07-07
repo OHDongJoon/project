@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+#content_form {
+			width: 1000px; height:700px;
+			margin: 30px auto 0px;
+		}
+		#content_form table tr { height: 10px;}
+		#content_form table {border: 2px solid pink; width:90%; margin: 0px auto;}
+#content_form table tr { background-color:#f4f0e6; height:70px; 
+ 
+}
+#content_form table tr:hover { background-color: #d9d9f3;
+	cursor: pointer;
+}
+#content_form td, #content_form th {text-align: center; padding:5px; }
+#content_form caption {font-size: 18px; padding:10px;}
+#content_form h2, #content_form b{text-align: center; color:red;}
+#content_form a { text-decoration: none; color:black}
+#content_form .left{text-align: left;}
+#content_form .paging {text-align: center;}
+#content_form input:not(.btn), #content_form textarea {
+	width: 90%;
+}
+strong {
+	font-size: 30px;
+}
+.but4 {
+	height :35px;
+	width : 50px;
+	background-color: white;
+	border : 2px solid black;
+	text-align: center;
+	margin-left : 500px;
+}
+
+

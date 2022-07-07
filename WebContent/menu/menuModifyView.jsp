@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<link href="${conPath }/css/noticeList.css" rel="stylesheet">
 </head>
 <body>
    <div id="content_form">
@@ -16,42 +16,41 @@
 	   <input type="hidden" name="pageNum" value="${param.pageNum }">
 	   <input type="hidden" name="foodid" value="${menuContent.foodid }">
 	   <input type="hidden" name="dbAphoto" value="${menuContent.aphoto }">
-	   <table>
-	     <caption>메뉴  수정 ${menuContent } </caption>
-	     
-	    <tr>
-	    
-	     <th>메뉴사진</th>
-	       <td><input type="file" name="aphoto">
-	       <c:if test="${not empty menuContent.aphoto  }">
-         <img src="${conPath }/MenuUp/${menuContent.aphoto }"  width="150">    	          
-       </c:if>
-	        </td>
-	     </tr>
-	    
-	    <tr>
-	      <th>메뉴이름</th>
-	      <td><input type="text" name="menuname"  required="required" size="30"
-	                   value="${menuContentt.menuname }"></td>
-	    </tr>
-	    
-	      <tr>
-	         <th>메뉴설명</th>
-			 <td><textarea rows="5" cols="32" 
-		     name="foodcontent">${menuContent.foodcontent }</textarea></td>
-		  </tr>
-		  <tr>
-	      <th>메뉴가격</th>
-	      <td><input type="text" name="menuprice"  required="required" size="30"
-	                   value="${menuContentt.menuprice }"></td>
-	    </tr>
-		  <tr>
-		     <td colspan="2">
-		       <input type="submit" value="수정" class="btn">
-		       <input type="reset" value="이전" class="btn" onclick="history.back()">
-			 </td>
-		  </tr>
-	   </table>
+	   <div class="board_wrap"> 
+     <div class="board_title">
+	  <strong>메뉴 수정</strong>
+        </div> <!-- baord title -->
+	   <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                    <dl>
+                        <dt>메뉴이름</dt>
+                        <dd><input type="text"  name="menuname" value="${menuContentt.menuname }" required="required" placeholder="제목 입력"></dd>
+                    </dl>
+                </div>
+	        <div class="info">
+	         
+	          <dl>
+	              <dt>메뉴가격</dt>
+	              <dd><input type="text" name="menuprice" value="${menuContentt.menuprice}" required="required"></dd>
+	          </dl>
+	          
+	          <dl>
+	             <dt>메뉴사진</dt>
+		             <dd><input type="file" name="aphoto" required="required"></dd>
+	          </dl>
+	        </div> <!-- info -->
+	        <div class="cont">
+             <textarea placeholder="내용 입력" name="foodcontent" required="required"></textarea>
+	         </div>
+	      </div><!-- board_write -->
+	     <div class="bt_wrap">
+	       <input type="submit" value="메뉴수정">
+	      <input type="button" value="이전" onclick="history.go(-1)" class="btn">
+          </div>
+
+</div><!-- board_write_wrap -->
+</div><!-- board_wrap --> 
 	   </form>
 	</div>
 </body>

@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/.css" rel="stylesheet">
+	<link href="${conPath }/css/header.css" rel="stylesheet">
 	<style>
 	
 	/* footer {

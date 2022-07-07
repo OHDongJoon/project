@@ -47,28 +47,7 @@
             </div>
           </div>
            </div>
-      <%--  <tr>
-         <th>작성자id</th>
-           <td><input type="text" name="aid" required="required"></td>
-         <th>작성자</th>
-           <td><input type="text" name="aname" required="required"></td>
-       </tr>
-       <tr>
-         <th>제목</th>
-           <td><input type="text" name="atitle" required="required"></td>
-       </tr>
-       <tr>
-         <th>본문</th>
-           <td><textarea rows="5" cols="20" name = "acontent"></textarea></td>
-       </tr>
-       <tr>
-         <td colspan="2">
-           <input type="submit" value="글쓰기" class="btn">
-           <input type="reset" value="초기화" class="btn">
-           <input type="button" value="목록" onclick="location='${conPath}/NoticeList.do'">
-         </td>
-        </tr>
-     </table> --%>
+     
    </form>	
 </body>
 </html>

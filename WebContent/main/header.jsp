@@ -24,8 +24,8 @@
                 <img class="head-logo" src="${conPath }/img/logo.png">
                 <nav class="head-menu-top-nav">
                     <ul>     
-                            <li class="top-nav01"><a href="#">오시는길</a></li>
-							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
+<!--                             <li class="top-nav01"><a href="#">오시는길</a></li>
+ -->							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
 							<li class="top-nav03"><a href="${conPath }/reivewList.do">후기</a></li>
 							 <li class="top-nav04"><a href="${conPath }/main.do">홈</a></li>
                     </ul>
@@ -51,8 +51,8 @@
                 <img class="head-logo" src="${conPath }/img/logo.png">
                 <nav class="head-menu-top-nav">
                     <ul>     
-                            <li class="top-nav01"><a href="#">오시는길</a></li>
-							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
+<!--                             <li class="top-nav01"><a href="#">오시는길</a></li>
+ -->							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
 							<li class="top-nav03"><a href="${conPath }/reivewList.do">후기</a></li>
 							 <li class="top-nav04"><a href="${conPath }/main.do">홈</a></li>
                     </ul>
@@ -80,7 +80,7 @@
                             <li class="top-nav01"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
 							<li class="top-nav02"><a href="${conPath }/MenuinsertView.do">메뉴등록</a></li>
 							<li class="top-nav03"><a href="${conPath }/reivewList.do">후기</a></li>
-							 <li class="top-nav04"><a href="${conPath }/main.do">">홈</a></li>
+							 <li class="top-nav04"><a href="${conPath }/main.do">홈</a></li>
                     </ul>
                  </nav>
             </div>

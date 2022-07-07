@@ -68,7 +68,7 @@ h2 {
 #all {
 		width:1600px;
 		height : 900px;
-		margin: 50px auto;
+		margin-left:20px; 
 		overflow:hidden;
 		box-sizing: border-box;
 	}
