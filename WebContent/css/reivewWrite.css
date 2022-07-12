@@ -349,7 +349,7 @@ a {
     cursor: pointer;
     background-color: #f0f0f0;
 }
-.rating .rate_radio:checked + label {
+/*클릭할때 노란색 변경*/.rating .rate_radio:checked + label {
     background-color: #ff8;
 }
 

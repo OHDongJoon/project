@@ -10,7 +10,10 @@
 	<title>Insert title here</title>
 	<link href="${conPath }/css/noticeList.css" rel="stylesheet">
 	<style>
-	
+	.board_wrap {
+    width: 1000px;
+    margin: 170px auto;
+}
 
 	</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -26,6 +29,8 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp" />
+
 	<!--  글쓰기 성공 if noticeList -->
   <c:if test="${not empty noticeWriteResult }">
      <script>
@@ -115,74 +120,7 @@ $(document).ready(function(){
             </div>
    </div> <!--  board_list_wrap-->
  </div> <!--  board warp -->
-   <!--  <div class="board_page">
-                <a href="#" class="bt first"><<</a>
-                <a href="#" class="bt prev"><</a>
-                <a href="#" class="num on">1</a>
-                <a href="#" class="num">2</a>
-                <a href="#" class="num">3</a>
-                <a href="#" class="num">4</a>
-                <a href="#" class="num">5</a>
-                <a href="#" class="bt next">></a>
-                <a href="#" class="bt first">>></a>
-            </div> -->
+   
  
 </body>
 </html>
-<%-- <div id ="content_form">
-  <table>
-  <tr>
-   <td>
-     	<c:if test="${not empty admin }"><a href="${conPath }/NoticeWriteView.do">공지글등록</a></c:if>
-     </td>
-   </tr>
-  </table>
-  <!-- nid aname atitle rdate aip-->
-  <br>
-  <table>
-  <tr>
-     <th>글번호</th>
-     <th>작성자</th>
-     <th>제목</th>
-     <th>날짜</th>
-     <th>IP</th>
-    
-    </tr>
-   
-   
-    <c:if test="${noticetotCnt==0 }">
-      <tr>
-        <td colspan="6"> 공지글이 없습니다</td>
-       </tr>
-    </c:if>
-    <!-- noticeList -->
-   <c:if test="${noticetotCnt != 0 }">
-   
-      <c:forEach items="${noticeList }" var="dto">
-	       <tr>
-	            <td>${dto.nid }</td>
-	            <td>${dto.aname }</td>
-	      		<td>${dto.atitle }</td>
-		     <td><fmt:formatDate value="${dto.ardate }" type="date" dateStyle="short"/></td>
-		     <td>${dto.aip }</td>
-	       </tr>
-	      </c:forEach>
-   </c:if>
-   </table>
- <div class ="paging">
-	     <c:if test="${startPage > BLOCKSIZE }">
-			[ <a href="${conPath }/NoticeList.do?pageNum=${startPage-1}"> 이전 </a> ]
-		</c:if>
-		<c:forEach var="i" begin="${startPage }" end="${endPage }">
-			<c:if test="${i == pageNum }">
-				<b> [ ${i } ] </b>
-			</c:if>
-			<c:if test="${i != pageNum }">
-				[ <a href="${conPath }/NoticeList.do?pageNum=${i}"> ${i } </a> ]
-			</c:if>
-		</c:forEach>
-		<c:if test="${endPage<pageCnt }">
-		  [ <a href="${conPath }/NoticeList.do?pageNum=${endPage+1}"> 다음 </a> ]
-		</c:if>
-	 </div>
-</div> --%>

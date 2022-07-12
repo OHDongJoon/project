@@ -21,6 +21,7 @@
   	});
 </script>
 </head>
+<body>
 <c:if test="${not empty menuReivewResult }">
        <script>
          alert(' ${menuReivewResult } ');

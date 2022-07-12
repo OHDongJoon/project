@@ -8,9 +8,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/menuContent.css" rel="stylesheet">
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<!--  APHOTO , MENUNAME , FOODCONTENT  -->
+	<style>
 	
+
+
+	</style>
 </head>
 <body>
 	<div id="content_form">
@@ -38,7 +42,8 @@
 	         ${menuContent.foodcontent }
 	       </td>
 	     </tr>
-	     <tr>
+	  
+	  <tr>
 	    <td colspan="2">
 	     <c:if test="${not empty admin}">
                 <button onclick="location='${conPath }/MenuModifyView.do?foodid=${menuContent.foodid }&pageNum=${param.pageNum }'">수정</button>

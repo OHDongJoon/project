@@ -24,8 +24,8 @@
                 <img class="head-logo" src="${conPath }/img/logo.png">
                 <nav class="head-menu-top-nav">
                     <ul>     
-<!--                             <li class="top-nav01"><a href="#">오시는길</a></li>
- -->							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
+                          
+							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
 							<li class="top-nav03"><a href="${conPath }/reivewList.do">후기</a></li>
 							 <li class="top-nav04"><a href="${conPath }/main.do">홈</a></li>
                     </ul>
@@ -44,15 +44,16 @@
 		</c:if>
         
 		
-		<c:if test="${not empty customer and empty admin}"> 
+		<c:if test="${not empty customer and empty admin}"> 사용자모드
 		
 		<div class="head-wrap">
             <div class="head-wrap-inner">
                 <img class="head-logo" src="${conPath }/img/logo.png">
                 <nav class="head-menu-top-nav">
                     <ul>     
-<!--                             <li class="top-nav01"><a href="#">오시는길</a></li>
- -->							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
+                           <li class="top-nav01"><a href="#">${customer.cName}님</a></li>
+			
+							<li class="top-nav02"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
 							<li class="top-nav03"><a href="${conPath }/reivewList.do">후기</a></li>
 							 <li class="top-nav04"><a href="${conPath }/main.do">홈</a></li>
                     </ul>
@@ -70,17 +71,18 @@
         </div>
 		</c:if>
 		
-		<c:if test="${empty member and not empty admin}"> 관리자 모드 로그인 화면
+		<c:if test="${empty member and not empty admin}">관리자 모드
 		
 			<div class="head-wrap">
             <div class="head-wrap-inner">
                 <img class="head-logo" src="${conPath }/img/logo.png">
                 <nav class="head-menu-top-nav">
                     <ul>     
+                    		 <li class="top-nav01"><a href="#">${admin.aName} 관리자님</a></li>
                             <li class="top-nav01"><a href="${conPath }/MenuallView.do">메뉴보기</a></li>
 							<li class="top-nav02"><a href="${conPath }/MenuinsertView.do">메뉴등록</a></li>
 							<li class="top-nav03"><a href="${conPath }/reivewList.do">후기</a></li>
-							 <li class="top-nav04"><a href="${conPath }/main.do">홈</a></li>
+							 
                     </ul>
                  </nav>
             </div>
@@ -88,6 +90,7 @@
             <div class="head-wrap-sub">
                 <nav class="head-menu-main-nav">
                     <ul>
+                       <li class="top-nav04"><a href="${conPath }/main.do">홈</a></li>
                      <li class="main-nav01"><a href="${conPath }/NoticeList.do">공지사항</a></li>
 					<li class="main-nav02"><a href="${conPath }/logout.do">관리자모드 나가기</a></li>
 					<li class="main-nav03"><a href="${conPath }/awithdrawalView.do">탈퇴하기</a></li>

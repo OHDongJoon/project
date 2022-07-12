@@ -17,6 +17,7 @@ CREATE TABLE CUSTOMER(
     
         INSERT INTO CUSTOMER (CID ,  CPW , CNAME , CEMAIL , CBIRTH , CADDRESS )
             VALUES ('AAA','111','백종원','KOK@NN.COM','1994-10-12','강남구 언주로');
+            
 
 COMMIT;
 --------------------------------------------------------------------

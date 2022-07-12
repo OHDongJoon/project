@@ -39,7 +39,7 @@
           </dl>
            </div><!-- info -->
            <div class="cont">
-              <textarea placeholder="내용 입력" name = "mcontent"   required="required"></textarea>
+              <textarea placeholder="내용 입력" name = "mcontent"  required="required"></textarea>
            </div><!-- cont -->
            </div><!--board_write  -->
             <div class="bt_wrap">

@@ -104,6 +104,7 @@
 						 	<img  src="${conPath }/img/star.png" width=15px;>
 						 	
 						 </c:if>
+						 (${dto.avg })
 					</td>
 					</tr>
 			</c:forEach>
